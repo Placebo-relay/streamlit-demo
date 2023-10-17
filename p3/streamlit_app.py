@@ -1,12 +1,12 @@
 import streamlit as st
 from streamlit import file_uploader
 import random
-from googletrans import Translator
+from translate import Translator
 
 def translate_text(text, target_language):
-    translator = Translator()
-    translation = translator.translate(text, dest=target_language)
-    return translation.text
+    translator = Translator(to_lang=target_language)
+    translation = translator.translate(text)
+    return translation
 
 # Translate the text strings
 st.title(translate_text("Line Relocator", "ja"))
