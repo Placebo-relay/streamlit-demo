@@ -49,8 +49,8 @@ def main():
         num_lines = st.sidebar.slider("Number of Lines", 5, 10, 5)
         generate_random_file(file_path, num_lines)
         st.success(f"Generated random file with {num_lines} lines.")
-         with open(log_file_path, 'w') as file:
-                file.write("Relocation Log:\n")
+        with open(log_file_path, 'w') as file:
+            file.write("Relocation Log:\n")
 
     elif option == "Upload File":
         uploaded_file = st.sidebar.file_uploader("Upload a file")
