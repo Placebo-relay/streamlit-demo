@@ -62,7 +62,7 @@ def main():
             st.success(f"Line {n} relocated after Line {m}.")
 
     if st.button("Download Modified File"):
-        with open('random_file.txt', 'r') as file:
+        with open('random_file_modified.txt', 'r') as file:
             modified_file_contents = file.read()
         st.download_button("Download", data=modified_file_contents, file_name='random_file_modified.txt')
 
