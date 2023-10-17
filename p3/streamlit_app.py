@@ -43,12 +43,14 @@ def main():
 
     file_path = 'original_file.txt'
     modified_file_path = 'file_modified.txt'
-    log_file_path = 'log.txt'
+    log_file_path = 'relocatlog.txt'
 
     if option == "Generate Random File":
         num_lines = st.sidebar.slider("Number of Lines", 5, 10, 5)
         generate_random_file(file_path, num_lines)
         st.success(f"Generated random file with {num_lines} lines.")
+         with open(log_file_path, 'w') as file:
+                file.write("Relocation Log:\n")
 
     elif option == "Upload File":
         uploaded_file = st.sidebar.file_uploader("Upload a file")
@@ -57,6 +59,8 @@ def main():
             with open(file_path, 'wb') as file:
                 file.write(file_contents)
             st.success("Uploaded file successfully.")
+            with open(log_file_path, 'w') as file:
+                file.write("Relocation Log:\n")
 
     display_file_contents(file_path)
 
