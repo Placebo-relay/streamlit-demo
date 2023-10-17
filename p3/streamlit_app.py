@@ -7,7 +7,7 @@ def generate_random_file(file_path, num_lines):
         for i in range(num_lines):
             file.write(f'Line {i+1}\n')
 
-def relocate_line(file_path, modified_file_path, n, m):
+def relocate_line(file_path, modified_file_path, n, m, change_log):
     with open(file_path, 'r') as file:
         lines = file.readlines()
 
@@ -70,7 +70,7 @@ def main():
         elif n - 1 == m:
             st.error("Error: Line n is already after Line m.")
         else:
-            relocate_line(file_path, modified_file_path, n, m)
+            relocate_line(file_path, modified_file_path, n, m, change_log)
             st.success(f"Line {n} relocated after Line {m}.")
             display_modified_file_contents(modified_file_path)
             display_change_log(change_log)
