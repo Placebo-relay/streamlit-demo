@@ -17,6 +17,8 @@ def relocate_line(file_path, modified_file_path, n, m):
     with open(modified_file_path, 'w') as file:
         file.writelines(lines)
 
+    change_log.append(f"Line {n} relocated after Line {m}")
+
 def display_file_contents(file_path):
     with open(file_path, 'r') as file:
         contents = file.read()
@@ -27,6 +29,9 @@ def display_modified_file_contents(modified_file_path):
         contents = file.read()
     st.text_area("Modified File Contents", value=contents, height=200)
 
+def display_change_log(change_log):
+    st.text_area("Change Log", value="\n".join(change_log), height=200)
+
 def main():
     st.title("Line Relocator")
 
@@ -36,10 +41,13 @@ def main():
     file_path = 'original_file.txt'
     modified_file_path = 'file_modified.txt'
 
+    change_log = []
+
     if option == "Generate Random File":
         num_lines = st.sidebar.slider("Number of Lines", 5, 10, 5)
         generate_random_file(file_path, num_lines)
         st.success(f"Generated random file with {num_lines} lines.")
+        change_log = []
 
     elif option == "Upload File":
         uploaded_file = st.sidebar.file_uploader("Upload a file")
@@ -48,6 +56,7 @@ def main():
             with open(file_path, 'wb') as file:
                 file.write(file_contents)
             st.success("Uploaded file successfully.")
+            change_log = []
 
     display_file_contents(file_path)
 
@@ -64,6 +73,7 @@ def main():
             relocate_line(file_path, modified_file_path, n, m)
             st.success(f"Line {n} relocated after Line {m}.")
             display_modified_file_contents(modified_file_path)
+            display_change_log(change_log)
 
         if st.button("Prepare file for download"):
             with open(modified_file_path, 'r') as file:
