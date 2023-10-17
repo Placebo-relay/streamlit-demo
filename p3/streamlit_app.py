@@ -2,23 +2,23 @@ import streamlit as st
 from streamlit import file_uploader
 import random
 
-def generate_random_file(num_lines):
-    with open('random_file.txt', 'w') as file:
+def generate_random_file(file_path, num_lines):
+    with open(file_path, 'w') as file:
         for i in range(num_lines):
             file.write(f'Line {i+1}\n')
 
-def relocate_line(n, m):
-    with open('random_file.txt', 'r') as file:
+def relocate_line(file_path, modified_file_path, n, m):
+    with open(file_path, 'r') as file:
         lines = file.readlines()
 
     line_n = lines.pop(n-1)
     lines.insert(m, line_n)
 
-    with open('random_file_modified.txt', 'w') as file:
+    with open(modified_file_path, 'w') as file:
         file.writelines(lines)
 
-def display_file_contents():
-    with open('random_file.txt', 'r') as file:
+def display_file_contents(file_path):
+    with open(file_path, 'r') as file:
         contents = file.read()
     st.text_area("File Contents", value=contents, height=200)
 
@@ -28,22 +28,25 @@ def main():
     st.sidebar.title("Options")
     option = st.sidebar.radio("Select an option:", ("Generate Random File", "Upload File"))
 
+    file_path = 'random_file.txt'
+    modified_file_path = 'random_file_modified.txt'
+
     if option == "Generate Random File":
         num_lines = st.sidebar.slider("Number of Lines", 5, 10, 5)
-        generate_random_file(num_lines)
+        generate_random_file(file_path, num_lines)
         st.success(f"Generated random file with {num_lines} lines.")
 
     elif option == "Upload File":
         uploaded_file = st.sidebar.file_uploader("Upload a file")
         if uploaded_file is not None:
             file_contents = uploaded_file.read()
-            with open('random_file.txt', 'wb') as file:
+            with open(file_path, 'wb') as file:
                 file.write(file_contents)
             st.success("Uploaded file successfully.")
 
-    display_file_contents()
+    display_file_contents(file_path)
 
-    num_lines = sum(1 for line in open('random_file.txt'))
+    num_lines = sum(1 for line in open(file_path))
     n = st.number_input("Line n:", min_value=1, max_value=num_lines, value=1, step=1)
     m = st.number_input("Line m:", min_value=1, max_value=num_lines, value=1, step=1)
 
@@ -53,13 +56,13 @@ def main():
         elif n - 1 == m:
             st.error("Error: Line n is already after Line m.")
         else:
-            relocate_line(n, m)
+            relocate_line(file_path, modified_file_path, n, m)
             st.success(f"Line {n} relocated after Line {m}.")
 
     if st.button("Download Modified File"):
-        with open('random_file_modified.txt', 'r') as file:
+        with open(modified_file_path, 'r') as file:
             modified_file_contents = file.read()
-        st.download_button("Download Modified File", data=modified_file_contents, file_name='random_file_modified.txt')
+        st.download_button("Download Modified File", data=modified_file_contents, file_name=modified_file_path)
 
 if __name__ == "__main__":
     main()
