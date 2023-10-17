@@ -28,13 +28,13 @@ def display_modified_file_contents(modified_file_path):
     st.text_area("Modified File Contents", value=contents, height=200)
 
 def main():
-    st.title("File Relocator")
+    st.title("Line Relocator")
 
     st.sidebar.title("Options")
     option = st.sidebar.radio("Select an option:", ("Generate Random File", "Upload File"))
 
-    file_path = 'random_file.txt'
-    modified_file_path = 'random_file_modified.txt'
+    file_path = 'original_file.txt'
+    modified_file_path = 'file_modified.txt'
 
     if option == "Generate Random File":
         num_lines = st.sidebar.slider("Number of Lines", 5, 10, 5)
