@@ -51,7 +51,7 @@ if z == 1:
 else:
     l_values = set()
     while len(l_values) < z:
-        l = st.number_input("Enter the value for l")
+        l = st.number_input(f"Enter the value for l, count is {len(l_values)}")
         l_values.add(l)
         st.write(f"{z - len(l_values)} to go")
 
