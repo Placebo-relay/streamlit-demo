@@ -12,7 +12,10 @@ def translate_text(text, target_language):
 st.title(translate_text("Line Relocator", "ja"))
 
 st.sidebar.title(translate_text("Options", "ja"))
-option = st.sidebar.radio(translate_text("Select an option:", "ja"), (translate_text("Generate Random File", "ja"), translate_text("Upload File", "ja")))
+option = st.sidebar.radio(translate_text("Select an option:", "ja"), (
+    translate_text("Generate Random File", "ja"),
+    translate_text("Upload File", "ja")
+))
 
 file_path = 'original_file.txt'
 modified_file_path = 'file_modified.txt'
