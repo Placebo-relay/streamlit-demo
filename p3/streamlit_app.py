@@ -36,11 +36,12 @@ def main():
     file_path = 'original_file.txt'
     modified_file_path = 'file_modified.txt'
 
+    events = []
+
     if option == "Generate Random File":
         num_lines = st.sidebar.slider("Number of Lines", 5, 10, 5)
         generate_random_file(file_path, num_lines)
-        st.success(f"Generated random file with {num_lines} lines.")
-        st.empty()
+        events.append(f"Generated random file with {num_lines} lines.")
 
     elif option == "Upload File":
         uploaded_file = st.sidebar.file_uploader("Upload a file")
@@ -48,8 +49,10 @@ def main():
             file_contents = uploaded_file.read()
             with open(file_path, 'wb') as file:
                 file.write(file_contents)
-            st.success("Uploaded file successfully.")
-            st.empty()
+            events.append("Uploaded file successfully.")
+
+    for event in events:
+        st.sidebar.write(event)
 
     display_file_contents(file_path)
 
@@ -64,8 +67,7 @@ def main():
             st.error("Error: Line n is already after Line m.")
         else:
             relocate_line(file_path, modified_file_path, n, m)
-            st.success(f"Line {n} relocated after Line {m}.")
-            st.empty()
+            events.append(f"Line {n} relocated after Line {m}.")
             display_modified_file_contents(modified_file_path)
 
     if st.button("Prepare file for download"):
