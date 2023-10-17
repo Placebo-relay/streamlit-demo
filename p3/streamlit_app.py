@@ -22,6 +22,11 @@ def display_file_contents(file_path):
         contents = file.read()
     st.text_area("File Contents", value=contents, height=200)
 
+def display_modified_file_contents(modified_file_path):
+    with open(modified_file_path, 'r') as file:
+        contents = file.read()
+    st.text_area("Modified File Contents", value=contents, height=200)
+
 def main():
     st.title("File Relocator")
 
@@ -29,7 +34,7 @@ def main():
     option = st.sidebar.radio("Select an option:", ("Generate Random File", "Upload File"))
 
     file_path = 'random_file.txt'
-    modified_file_path = 'modified.txt'
+    modified_file_path = 'random_file_modified.txt'
 
     if option == "Generate Random File":
         num_lines = st.sidebar.slider("Number of Lines", 5, 10, 5)
@@ -58,6 +63,7 @@ def main():
         else:
             relocate_line(file_path, modified_file_path, n, m)
             st.success(f"Line {n} relocated after Line {m}.")
+            display_modified_file_contents(modified_file_path)
 
     if st.button("Download Modified File"):
         with open(modified_file_path, 'r') as file:
