@@ -14,7 +14,7 @@ def relocate_line(n, m):
     line_n = lines.pop(n-1)
     lines.insert(m, line_n)
 
-    with open('random_file.txt', 'w') as file:
+    with open('random_file_modified.txt', 'w') as file:
         file.writelines(lines)
 
 def display_file_contents():
