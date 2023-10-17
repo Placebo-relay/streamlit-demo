@@ -33,7 +33,7 @@ def display_modified_file_contents(modified_file_path):
 def display_relocation_log(log_file_path):
     with open(log_file_path, 'r') as file:
         contents = file.read()
-    st.sidebar.text_area("log", value=contents, height=200)
+    st.sidebar.text_area("Relocation Log", value=contents, height=200)
 
 def main():
     st.title("Line Relocator")
