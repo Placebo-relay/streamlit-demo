@@ -46,8 +46,8 @@ def main():
     log_file_path = 'relocation_log.txt'
 
     if option == "Generate Random File":
+        num_lines = st.sidebar.slider("Number of Lines", 5, 10, 5)
         if st.button("Generate"):
-            num_lines = st.sidebar.slider("Number of Lines", 5, 10, 5)
             generate_random_file(file_path, num_lines)
             st.success(f"Generated random file with {num_lines} lines.")
             with open(log_file_path, 'w') as file:
