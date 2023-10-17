@@ -60,8 +60,6 @@ def main():
         else:
             relocate_line(n, m)
             st.success(f"Line {n} relocated after Line {m}.")
-    
-    display_file_contents()
 
     if st.button("Download Modified File"):
         with open('random_file.txt', 'r') as file:
