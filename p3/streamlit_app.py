@@ -1,8 +1,6 @@
 import streamlit as st
 from streamlit import file_uploader
 import random
-import pandas as pd
-import os
 
 def generate_random_file(num_lines):
     with open('random_file.txt', 'w') as file:
@@ -16,23 +14,13 @@ def relocate_line(n, m):
     line_n = lines.pop(n-1)
     lines.insert(m, line_n)
 
-    with open('random_file_modified.txt', 'w') as file:
+    with open('random_file.txt', 'w') as file:
         file.writelines(lines)
 
 def display_file_contents():
     with open('random_file.txt', 'r') as file:
         contents = file.read()
     st.text_area("File Contents", value=contents, height=200)
-
-def display_modified_file_contents():
-    with open('random_file_modified.txt', 'r') as file:
-        contents = file.read()
-    st.text_area("Modified File Contents", value=contents, height=200)
-
-def log_changes(n, m):
-    log_df = pd.read_csv('change_log.csv') if 'change_log.csv' in os.listdir() else pd.DataFrame(columns=['Action', 'Line n', 'Line m'])
-    log_df = log_df.append({'Action': 'Line Relocated', 'Line n': n, 'Line m': m}, ignore_index=True)
-    log_df.to_csv('change_log.csv', index=False)
 
 def main():
     st.title("File Relocator")
@@ -56,10 +44,6 @@ def main():
     display_file_contents()
 
     num_lines = sum(1 for line in open('random_file.txt'))
-    n = st.number_input("Line n:", min_value=1, max_value=num
-    display_file_contents()
-
-    num_lines = sum(1 for line in open('random_file.txt'))
     n = st.number_input("Line n:", min_value=1, max_value=num_lines, value=1, step=1)
     m = st.number_input("Line m:", min_value=1, max_value=num_lines, value=1, step=1)
 
@@ -70,15 +54,7 @@ def main():
             st.error("Error: Line n is already after Line m.")
         else:
             relocate_line(n, m)
-            log_changes(n, m)
             st.success(f"Line {n} relocated after Line {m}.")
-
-    display_modified_file_contents()
-
-    if st.button("Download Modified File"):
-        with open('random_file_modified.txt', 'r') as file:
-            modified_file_contents = file.read()
-        st.download_button("Download", data=modified_file_contents, file_name='random_file_modified.txt')
 
 if __name__ == "__main__":
     main()
