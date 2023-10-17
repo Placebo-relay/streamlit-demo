@@ -29,7 +29,7 @@ def main():
     option = st.sidebar.radio("Select an option:", ("Generate Random File", "Upload File"))
 
     file_path = 'random_file.txt'
-    modified_file_path = 'random_file_modified.txt'
+    modified_file_path = 'modified.txt'
 
     if option == "Generate Random File":
         num_lines = st.sidebar.slider("Number of Lines", 5, 10, 5)
