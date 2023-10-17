@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit import file_uploader
 import random
 import io
+import os
 
 def generate_random_file(file_path, num_lines):
     with open(file_path, 'w') as file:
@@ -17,6 +18,10 @@ def relocate_line(file_path, modified_file_path, n, m):
 
     with open(modified_file_path, 'w') as file:
         file.writelines(lines)
+
+def delete_modified_file(modified_file_path):
+    if os.path.exists(modified_file_path):
+        os.remove(modified_file_path)
 
 def display_file_contents(file_path):
     with open(file_path, 'r') as file:
@@ -37,8 +42,11 @@ def main():
     file_path = 'original_file.txt'
     modified_file_path = 'file_modified.txt'
 
+    relocated = False
+
     if option == "Generate Random File":
         num_lines = st.sidebar.slider("Number of Lines", 5, 10, 5)
+        delete_modified_file(modified_file_path)
         generate_random_file(file_path, num_lines)
         st.success(f"Generated random file with {num_lines} lines.")
 
@@ -46,6 +54,7 @@ def main():
         uploaded_file = st.sidebar.file_uploader("Upload a file")
         if uploaded_file is not None:
             file_contents = uploaded_file.read()
+            delete_modified_file(modified_file_path)
             with open(file_path, 'wb') as file:
                 file.write(file_contents)
             st.success("Uploaded file successfully.")
@@ -65,12 +74,14 @@ def main():
             relocate_line(file_path, modified_file_path, n, m)
             st.success(f"Line {n} relocated after Line {m}.")
             display_modified_file_contents(modified_file_path)
+            relocated = True
 
-    if st.button("Prepare file for download"):
-        with open(modified_file_path, 'r') as file:
-            modified_file_contents = file.read()
-        byte_stream = io.BytesIO(modified_file_contents.encode())
-        st.download_button("Download", data=byte_stream, file_name=modified_file_path)
+    if relocated:
+        if st.button("Prepare file for download"):
+            with open(modified_file_path, 'r') as file:
+                modified_file_contents = file.read()
+            byte_stream = io.BytesIO(modified_file_contents.encode())
+            st.download_button("Download", data=byte_stream, file_name=modified_file_path)
 
 if __name__ == "__main__":
     main()
