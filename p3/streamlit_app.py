@@ -21,11 +21,6 @@ def display_file_contents():
     with open('random_file.txt', 'r') as file:
         contents = file.read()
     st.text_area("File Contents", value=contents, height=200)
-    
-def display_modified_file_contents():
-    with open('random_file_modified.txt', 'r') as file:
-        contents = file.read()
-    st.text_area("Modified File Contents", value=contents, height=200)
 
 def main():
     st.title("File Relocator")
@@ -64,7 +59,7 @@ def main():
     if st.button("Download Modified File"):
         with open('random_file_modified.txt', 'r') as file:
             modified_file_contents = file.read()
-        st.download_button("Download", data=modified_file_contents, file_name='random_file_modified.txt')
+        st.download_button("Download Modified File", data=modified_file_contents, file_name='random_file_modified.txt')
 
 if __name__ == "__main__":
     main()
