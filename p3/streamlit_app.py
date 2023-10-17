@@ -39,7 +39,7 @@ def main():
     st.title("Line Relocator")
 
     st.sidebar.title("Options")
-    option = st.sidebar.radio("Select an option:", ("Generate Random File", "Upload File"))
+    option = st.sidebar.radio("Select an option:", ("Upload File","Generate Random File",))
 
     file_path = 'original_file.txt'
     modified_file_path = 'file_modified.txt'
