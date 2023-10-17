@@ -66,11 +66,11 @@ def main():
             st.success(f"Line {n} relocated after Line {m}.")
             display_modified_file_contents(modified_file_path)
 
-    if st.button("Prepare file for download"):
-        with open(modified_file_path, 'r') as file:
-            modified_file_contents = file.read()
-        byte_stream = io.BytesIO(modified_file_contents.encode())
-        st.download_button("Download", data=byte_stream, file_name=modified_file_path)
+        if st.button("Prepare file for download"):
+            with open(modified_file_path, 'r') as file:
+                modified_file_contents = file.read()
+            byte_stream = io.BytesIO(modified_file_contents.encode())
+            st.download_button("Download", data=byte_stream, file_name=modified_file_path)
 
 if __name__ == "__main__":
     main()
