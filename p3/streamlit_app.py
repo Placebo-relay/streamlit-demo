@@ -2,20 +2,10 @@ import streamlit as st
 from streamlit import file_uploader
 import random
 
-def generate_random_file(num_lines):
-    with open('random_file.txt', 'w') as file:
-        for i in range(num_lines):
-            file.write(f'Line {i+1}\n')
-
-def relocate_line(n, m):
+def display_file_contents():
     with open('random_file.txt', 'r') as file:
-        lines = file.readlines()
-
-    line_n = lines.pop(n-1)
-    lines.insert(m, line_n)
-
-    with open('random_file.txt', 'w') as file:
-        file.writelines(lines)
+        contents = file.read()
+    st.text_area("File Contents", value=contents, height=200)
 
 def main():
     st.title("File Relocator")
@@ -37,9 +27,13 @@ def main():
                 file.write(file_contents)
             st.success("Uploaded file successfully.")
 
+    # Display file contents
+    display_file_contents()
+
     # Create widgets for inputting line numbers
-    n = st.number_input("Line n:", min_value=1, max_value=5, value=1, step=1)
-    m = st.number_input("Line m:", min_value=1, max_value=5, value=1, step=1)
+    num_lines = sum(1 for line in open('random_file.txt'))
+    n = st.number_input("Line n:", min_value=1, max_value=num_lines, value=1, step=1)
+    m = st.number_input("Line m:", min_value=1, max_value=num_lines, value=1, step=1)
 
     # Button to relocate lines
     if st.button("Relocate"):
