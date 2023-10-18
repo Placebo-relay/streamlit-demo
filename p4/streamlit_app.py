@@ -2,6 +2,7 @@ import numpy as np
 from scipy.special import ellipk
 import matplotlib.pyplot as plt
 import streamlit as st
+import pandas as pd
 
 def calculate_period(phi0, l):
     g = 9.8  # acceleration due to gravity
