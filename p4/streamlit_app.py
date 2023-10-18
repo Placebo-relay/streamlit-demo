@@ -29,7 +29,7 @@ def plot_data(data):
     ax.legend()
     return fig
 
-def calculate_and_display_data(a, b, z, l_values):
+def calculate_and_display_data(a, b, l_values): #z
     phi0_values = np.linspace(a, b, 1000)
     data = save_data(l_values, phi0_values)
     
@@ -43,11 +43,17 @@ def calculate_and_display_data(a, b, z, l_values):
             if show_table:
                 st.table(l_data)
 
-a = st.slider("a", 0.0, 10.0, 0.0, 0.1)
-b = st.slider("b", 0.0, 10.0, 1.0, 0.1)
-z = st.slider("z", 1, 10, 2)
+#a = st.slider("a", 0.0, 10.0, 0.0, 0.1)
+#b = st.slider("b", 0.0, 10.0, 1.0, 0.1)
+
+a, b = st.slider("phi0", 0.0, 10.0, (0.0, 1.0), 0.1)
+a_latex = r"\frac{-\pi}{2}"
+b_latex = r"\frac{\pi}{2}"
+# Display the dual-slider with pretty LaTeX bounds
+st.latex(f"{a_latex} \leq \phi0 \leq {b_latex}")
+#z = st.slider("z", 1, 10, 2)
 
 l_values_input = st.text_area("Enter the values for l (one value per line)", "")
 l_values = set(map(float, l_values_input.strip().split("\n")))
 
-calculate_and_display_data(a, b, z, list(l_values))
+calculate_and_display_data(a, b, list(l_values)) #z
