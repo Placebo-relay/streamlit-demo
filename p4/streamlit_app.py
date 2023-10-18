@@ -29,7 +29,7 @@ def plot_data(data):
     ax.legend()
     return fig
 
-def calculate_and_display_data(a, b, l_values): #z
+def calculate_and_display_data(a, b, l_values):
     phi0_values = np.linspace(a, b, 1000)
     data = save_data(l_values, phi0_values)
     
@@ -43,7 +43,17 @@ def calculate_and_display_data(a, b, l_values): #z
             if show_table:
                 st.table(l_data)
 
-st.set_page_config(hide_streamlit_style=True)
+# Add custom CSS to hide the GitHub button
+hide_github_button = """
+<style>
+.css-1v3fvcr.e1q3nk1v0 {
+    visibility: hidden;
+}
+</style>
+"""
+st.markdown(hide_github_button, unsafe_allow_html=True)
+
+
 st.latex(r"T = 4 \sqrt{\frac{l}{g}} \cdot \text{ellipk}(\sin^2(\frac{\phi_0}{2}))")
 # Define the bounds and step size
 a_min = -np.pi / 2
@@ -61,7 +71,6 @@ b_latex = r"\frac{\pi}{2}"
 
 # Display the dual-slider with pretty LaTeX bounds
 st.latex(f"{a_latex} \leq \phi_0 \leq {b_latex}")
-#z = st.slider("z", 1, 10, 2)
 
 # Create a text area for user input
 l_values_input = st.text_area("Enter l values (one per line)")
