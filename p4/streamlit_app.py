@@ -20,20 +20,22 @@ def save_data(l_values, phi0_values):
     return data
 
 def plot_data(data):
+    fig, ax = plt.subplots()
     for l, l_data in data:
         phi0_values, T_values = zip(*l_data)
-        plt.plot(phi0_values, T_values, label=f"l = {l}")
-    plt.xlabel("phi0")
-    plt.ylabel("T")
-    plt.legend()
-    st.pyplot()
+        ax.plot(phi0_values, T_values, label=f"l = {l}")
+    ax.set_xlabel("phi0")
+    ax.set_ylabel("T")
+    ax.legend()
+    return fig
 
 def calculate_and_display_data(a, b, z, l_values):
     phi0_values = np.linspace(a, b, 1000)
     data = save_data(l_values, phi0_values)
     
     if data:
-        plot_data(data)
+        fig = plot_data(data)
+        st.pyplot(fig)
         
         for i, (l, l_data) in enumerate(data):
             st.sidebar.write(f"l = {l}")
