@@ -63,10 +63,8 @@ b_latex = r"\frac{\pi}{2}"
 st.latex(f"{a_latex} \leq \phi_0 \leq {b_latex}")
 #z = st.slider("z", 1, 10, 2)
 
-l_values_input = st.text_area("Enter the values for l (one value per line)", "")
-
 # Create a text area for user input
-l_values_input = st.text_area("Enter values (one per line)")
+l_values_input = st.text_area("Enter l values (one per line)")
 
 # Create a button to trigger the calculation
 if st.button("Calculate"):
