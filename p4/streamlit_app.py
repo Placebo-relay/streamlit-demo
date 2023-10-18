@@ -43,11 +43,21 @@ def calculate_and_display_data(a, b, l_values): #z
             if show_table:
                 st.table(l_data)
 
-#a = st.slider("a", 0.0, 10.0, 0.0, 0.1)
-#b = st.slider("b", 0.0, 10.0, 1.0, 0.1)
 st.latex(r"T = 4 \sqrt{\frac{l}{g}} \cdot \text{ellipk}(\sin^2(\frac{\phi_0}{2}))")
 
-a, b = st.slider("angle", -0.5 * 3.14159, 0.5 * 3.14159, (-0.5 * 3.14159, 1.0), 0.1)
+# Define the bounds and step size
+a_min = -np.pi / 2
+a_max = np.pi / 2
+b_min = 0.0
+b_max = np.pi / 2
+step_size = np.pi / 10
+
+# Create the dual-slider
+a, b = st.slider("phi0", a_min, a_max, (a_min, b_max), step=step_size)
+
+
+
+
 
 # Convert the bounds to LaTeX format
 a_latex = r"\frac{-\pi}{2}"
