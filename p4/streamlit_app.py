@@ -2,22 +2,20 @@ import numpy as np
 from scipy.special import ellipk
 import matplotlib.pyplot as plt
 import streamlit as st
-import pandas as pd
 
 def calculate_period(phi0, l):
     g = 9.8  # acceleration due to gravity
     T = 4 * np.sqrt(l / g) * ellipk(np.sin(phi0 / 2) ** 2)
     return T
-    
+
 def save_data(l_values, phi0_values):
-    data = {}
+    data = []
     for i, l in enumerate(l_values):
         l_data = []
         for phi0 in phi0_values:
             T = calculate_period(phi0, l)
             l_data.append((phi0, T))
-        df = pd.DataFrame(l_data, columns=['angle', f'T(angle, l={l})'])
-        data[l] = df
+        data.append((l, l_data))
     
     return data
 
@@ -34,16 +32,16 @@ def plot_data(data):
 def calculate_and_display_data(a, b, l_values): #z
     phi0_values = np.linspace(a, b, 1000)
     data = save_data(l_values, phi0_values)
-
+    
     if data:
         fig = plot_data(data)
         st.pyplot(fig)
         
-        for i, (l, df) in enumerate(data.items()):
+        for i, (l, l_data) in enumerate(data):
             st.sidebar.write(f"l = {l}")
             show_table = st.sidebar.checkbox(f"Show Table {i+1}", value=True)
             if show_table:
-                st.table(df)
+                st.table(l_data)
 
 st.latex(r"T = 4 \sqrt{\frac{l}{g}} \cdot \text{ellipk}(\sin^2(\frac{\phi_0}{2}))")
 
