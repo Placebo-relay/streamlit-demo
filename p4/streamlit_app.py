@@ -53,11 +53,7 @@ b_max = np.pi / 2
 step_size = np.pi / 10
 
 # Create the dual-slider
-a, b = st.slider("phi0", a_min, a_max, (a_min, b_max), step=step_size)
-
-
-
-
+a, b = st.slider("angle", a_min, a_max, (a_min, b_max), step=step_size)
 
 # Convert the bounds to LaTeX format
 a_latex = r"\frac{-\pi}{2}"
