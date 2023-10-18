@@ -26,12 +26,15 @@ def save_data(l_values, phi0_values):
     return arr
 
 def plot_data(data):
+    plt.rc('text', usetex=True)  # Enable LaTeX rendering
+    plt.rc('font', family='serif')  # Use a serif font for LaTeX rendering
+    
     fig, ax = plt.subplots()
     for l, l_data in data:
         phi0_values, T_values = zip(*l_data)
         ax.plot(phi0_values, T_values, label=f"l = {l}")
-    ax.set_xlabel("phi0")
-    ax.set_ylabel("T")
+    ax.set_xlabel(r"$\phi_0$ (in radians)")  # Use LaTeX syntax for the axes labels
+    ax.set_ylabel(r"$T$ (in seconds)")
     ax.legend()
     return fig
 
