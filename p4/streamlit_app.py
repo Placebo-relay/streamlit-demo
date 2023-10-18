@@ -45,10 +45,7 @@ a = st.slider("a", 0.0, 10.0, 0.0, 0.1)
 b = st.slider("b", 0.0, 10.0, 1.0, 0.1)
 z = st.slider("z", 1, 10, 2)
 
-l_values = set()
-for _ in range(z):
-    l = st.number_input("Enter the value for l")
-    l_values.add(l)
-    st.write(f"{z - len(l_values)} to go")
+l_values_input = st.text_area("Enter the values for l (one value per line)", "")
+l_values = set(map(float, l_values_input.strip().split("\n")))
 
 calculate_and_display_data(a, b, z, list(l_values))
