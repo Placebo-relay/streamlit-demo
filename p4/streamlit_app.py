@@ -17,7 +17,11 @@ def save_data(l_values, phi0_values):
             l_data.append((phi0, T))
         data.append((l, l_data))
     
-    return data
+    # Create a structured array with named columns
+    dtype = [('angle', float), ('T(angle, l)', float)]
+    arr = np.array(data, dtype=dtype)
+    
+    return arr
 
 def plot_data(data):
     fig, ax = plt.subplots()
