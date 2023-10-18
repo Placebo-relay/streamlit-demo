@@ -18,12 +18,6 @@ def save_data(l_values, phi0_values):
         data.append((l, l_data))
     
     return data
-    
-    # Create a structured array with named columns
-    dtype = [('angle', float), ('T(angle, l)', float)]
-    arr = np.array(data, dtype=dtype)
-    
-    return arr
 
 def plot_data(data):
     fig, ax = plt.subplots()
@@ -77,3 +71,16 @@ l_values_input = st.text_area("Enter the values for l (one value per line)", "")
 l_values = set(map(float, l_values_input.strip().split("\n")))
 
 calculate_and_display_data(a, b, list(l_values)) #z
+
+
+
+
+def plot_data(data):
+    fig, ax = plt.subplots()
+    for l, l_data in data:
+        phi0_values, T_values = zip(*l_data)
+        ax.plot(phi0_values, T_values, label=f"l = {l}")
+    ax.set_xlabel("phi0")
+    ax.set_ylabel("T")
+    ax.legend()
+    return fig
