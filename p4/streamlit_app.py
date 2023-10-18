@@ -68,19 +68,13 @@ st.latex(f"{a_latex} \leq \phi_0 \leq {b_latex}")
 #z = st.slider("z", 1, 10, 2)
 
 l_values_input = st.text_area("Enter the values for l (one value per line)", "")
-l_values = set(map(float, l_values_input.strip().split("\n")))
 
-calculate_and_display_data(a, b, list(l_values)) #z
+if st.button("Calculate"):
+    # Check if the input is not empty
+    if l_values_input.strip():
+        # Split the input by newline and convert to floats
+        l_values = set(map(float, l_values_input.strip().split("\n")))
+        calculate_and_display_data(a, b, list(l_values)) #z
+    else:
+        st.write("Please enter some values.")
 
-
-
-
-def plot_data(data):
-    fig, ax = plt.subplots()
-    for l, l_data in data:
-        phi0_values, T_values = zip(*l_data)
-        ax.plot(phi0_values, T_values, label=f"l = {l}")
-    ax.set_xlabel("phi0")
-    ax.set_ylabel("T")
-    ax.legend()
-    return fig
