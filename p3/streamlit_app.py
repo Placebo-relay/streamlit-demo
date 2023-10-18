@@ -36,6 +36,16 @@ def display_relocation_log(log_file_path):
     st.sidebar.text_area("Relocation Log", value=contents, height=200)
 
 def main():
+    # Add custom CSS to hide the GitHub button
+    hide_github_button = """
+    <style>
+    .css-1v3fvcr.e1q3nk1v0 {
+        visibility: hidden;
+    }
+    </style>
+    """
+    st.markdown(hide_github_button, unsafe_allow_html=True)    
+    
     st.title("Line Relocator")
 
     st.sidebar.title("Options")
