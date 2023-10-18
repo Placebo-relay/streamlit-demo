@@ -50,7 +50,7 @@ a, b = st.slider("phi0", 0.0, 10.0, (0.0, 1.0), 0.1)
 a_latex = r"\frac{-\pi}{2}"
 b_latex = r"\frac{\pi}{2}"
 # Display the dual-slider with pretty LaTeX bounds
-st.latex(f"{a_latex} \leq \phi0 \leq {b_latex}")
+st.latex(f"{a_latex} \leq \phi_0 \leq {b_latex}")
 #z = st.slider("z", 1, 10, 2)
 
 l_values_input = st.text_area("Enter the values for l (one value per line)", "")
