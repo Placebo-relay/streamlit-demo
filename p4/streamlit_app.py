@@ -65,12 +65,32 @@ st.latex(f"{a_latex} \leq \phi_0 \leq {b_latex}")
 
 l_values_input = st.text_area("Enter the values for l (one value per line)", "")
 
+# Create a text area for user input
+l_values_input = st.text_area("Enter values (one per line)")
+
+# Create a button to trigger the calculation
 if st.button("Calculate"):
     # Check if the input is not empty
     if l_values_input.strip():
-        # Split the input by newline and convert to floats
-        l_values = set(map(float, l_values_input.strip().split("\n")))
-        calculate_and_display_data(a, b, list(l_values)) #z
+        # Split the input by newline
+        lines = l_values_input.strip().split("\n")
+        
+        # Initialize a list to store valid values
+        valid_values = []
+        
+        # Iterate over each line and validate the value
+        for line in lines:
+            try:
+                value = float(line)
+                valid_values.append(value)
+            except ValueError:
+                st.write(f"Invalid value: {line}")
+        
+        # Check if there are any valid values
+        if valid_values:
+            calculate_and_display_data(a, b, valid_values)
+        else:
+            st.write("No valid values entered.")
     else:
         st.write("Please enter some values.")
 
