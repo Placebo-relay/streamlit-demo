@@ -43,8 +43,8 @@ def calculate_and_display_data(a, b, l_values): #z
             if show_table:
                 st.table(l_data)
 
+st.set_page_config(hide_streamlit_style=True)
 st.latex(r"T = 4 \sqrt{\frac{l}{g}} \cdot \text{ellipk}(\sin^2(\frac{\phi_0}{2}))")
-
 # Define the bounds and step size
 a_min = -np.pi / 2
 a_max = np.pi / 2
