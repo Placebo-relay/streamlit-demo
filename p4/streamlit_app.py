@@ -73,15 +73,15 @@ if st.button("Calculate"):
         # Split the input by newline
         lines = l_values_input.strip().split("\n")
         
-        # Initialize a list to store valid values
-        valid_values = []
+        # Initialize a set to store unique valid values
+        valid_values = set()
         
         # Iterate over each line and validate the value
         for line in lines:
             try:
                 value = float(line)
                 if value != 0:  # Exclude 0 from valid values
-                    valid_values.append(value)
+                    valid_values.add(value)
                 else:
                     st.write(f"Invalid value: {line}")
             except ValueError:
@@ -89,9 +89,8 @@ if st.button("Calculate"):
         
         # Check if there are any valid values
         if valid_values:
-            calculate_and_display_data(a, b, valid_values)
+            calculate_and_display_data(a, b, list(valid_values))
         else:
             st.write("No valid values entered.")
     else:
         st.write("Please enter some values.")
-
