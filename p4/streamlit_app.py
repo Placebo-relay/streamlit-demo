@@ -28,31 +28,24 @@ def plot_data(data):
     plt.legend()
     st.pyplot()
 
-def calculate_and_save_data(a, b, z, l_values):
+def calculate_and_display_data(a, b, z, l_values):
     phi0_values = np.linspace(a, b, 1000)
     data = save_data(l_values, phi0_values)
-    plot_data(data)
     
-    for i, (l, l_data) in enumerate(data):
-        file_name = f"{i+1}.txt"
-        with open(file_name, "w") as file:
-            file.write(f"#l = {l}\n")
-            for phi0, T in l_data:
-                file.write(f"{phi0} {T}\n")
-        st.download_button("Download File", file_name, file_name)
+    if data:
+        plot_data(data)
+        
+        for i, (l, l_data) in enumerate(data):
+            st.sidebar.write(f"l = {l}")
+            show_table = st.sidebar.checkbox(f"Show Table {i+1}", value=True)
+            if show_table:
+                st.table(l_data)
 
 a = st.slider("a", 0.0, 10.0, 0.0, 0.1)
 b = st.slider("b", 0.0, 10.0, 1.0, 0.1)
 z = st.slider("z", 1, 10, 2)
 
-if z == 1:
-    l = st.number_input("Enter the value for l")
-    l_values = [l]
-else:
-    l_values = set()
-    while len(l_values) < z:
-        l = st.number_input("Enter the value for l")
-        l_values.add(l)
-        st.write(f"{z - len(l_values)} to go")
+l_values_input = st.text_area("Enter the values for l (one value per line)", "")
+l_values = set(map(float, l_values_input.strip().split("\n")))
 
-calculate_and_save_data(a, b, z, list(l_values))
+calculate_and_display_data(a, b, z, list(l_values))
