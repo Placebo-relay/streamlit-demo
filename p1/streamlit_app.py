@@ -6,6 +6,16 @@ def count_odd_even(array):
     even_count = len(array) - odd_count
     return odd_count, even_count
 
+def insertion_sort(array):
+    for i in range(1, len(array)):
+        key = array[i]
+        j = i - 1
+        while j >= 0 and array[j] > key:
+            array[j + 1] = array[j]
+            j -= 1
+        array[j + 1] = key
+    return array
+
 def main():
     st.title("Array Operations")
     
@@ -50,9 +60,9 @@ def main():
         geometric_mean = PRODUCT ** (1 / len(array))
         st.write("\nMean: {:.2f}".format(mean))
         st.write("Geometric Mean: {:.2f}".format(geometric_mean))
-        sorted_array = sorted(array)
-        st.write("\nSorted Array (Ascending):", sorted_array)
-        st.write("Sorted Array (Descending):", sorted_array[::-1])
+        sorted_array = insertion_sort(array)
+        st.write("\nSorted Array (Ascending):", *sorted_array)
+        st.write("Sorted Array (Descending):", *sorted_array[::-1])
 
 if __name__ == "__main__":
     main()
