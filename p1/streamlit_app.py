@@ -24,8 +24,8 @@ def insertion_sort(array):
 def main():
     st.title("Array Operations")
     
-    st.write("______\n")
-    st.write("\n p1: [9] => T3,I3,M1: array operations on [N]x1 of random int")
+    st.write("______")
+    st.write("p1: [9] => T3,I3,M1: array operations on [N]x1 of random int")
     st.write("______")
     
     with st.sidebar:
