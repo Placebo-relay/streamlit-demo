@@ -1,5 +1,6 @@
 import streamlit as st
 import random
+from sessionstate import SessionState
 
 def search_value(array, value):
     indexes = [i for i, num in enumerate(array) if num == value]
@@ -18,6 +19,8 @@ def main():
     st.write("\n p1: [9] => T3,I3,M1: array operations on 1x[N] of random int\n")
     st.write("______")
     
+    session_state = SessionState.array_initialized(False)
+    
     with st.sidebar:
         size = st.number_input("Enter N size number of elements for 1x[N] array:", min_value=1, step=1)
         randomize_button = st.button("Randomize")
@@ -25,11 +28,13 @@ def main():
         search_value_input = st.text_input("Enter a value to search in the array:")
         search_button = st.button("Search")
     
-    array = []
     if randomize_button and size:
-        array = [random.randint(-100, 100) for _ in range(int(size))]
+        session_state.array = [random.randint(-100, 100) for _ in range(int(size))]
+        session_state.array_initialized = True
     
-    if array:
+    if session_state.array_initialized:
+        array = session_state.array
+        
         odd_count, even_count = count_odd_even(array)
         
         SUM = sum(array)
