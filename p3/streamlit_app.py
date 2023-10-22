@@ -1,7 +1,6 @@
 import streamlit as st
+from streamlit import file_uploader
 import random
-import tempfile
-import os
 
 def generate_random_file(file_path, num_lines):
     with open(file_path, 'w') as file:
@@ -37,20 +36,14 @@ def display_relocation_log(log_file_path):
     st.sidebar.text_area("Relocation Log", value=contents, height=200)
 
 def main():
-    # Create a unique session ID for each user
-    session_id = st.report_thread.get_report_ctx().session_id
-
-    # Create a temporary directory for each session/user
-    session_dir = tempfile.mkdtemp(prefix=session_id)
-
-    file_path = os.path.join(session_dir, 'original_file.txt')
-    modified_file_path = os.path.join(session_dir, 'file_modified.txt')
-    log_file_path = os.path.join(session_dir, 'relocation_log.txt')
-
     st.title("Line Relocator")
 
     st.sidebar.title("Options")
     option = st.sidebar.radio("Select an option:", ("Upload File","Generate Random File",))
+
+    file_path = 'original_file.txt'
+    modified_file_path = 'file_modified.txt'
+    log_file_path = 'relocation_log.txt'
 
     if option == "Generate Random File":
         num_lines = st.sidebar.slider("Number of Lines", 5, 10, 5)
