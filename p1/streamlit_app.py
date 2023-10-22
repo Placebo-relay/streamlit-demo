@@ -20,13 +20,16 @@ def main():
     
     with st.sidebar:
         size = st.number_input("Enter N size number of elements for 1x[N] array:", min_value=1, step=1)
+        randomize_button = st.button("Randomize")
         number = st.number_input("Guess a number in -100..100 to be randomed in 1x[N]:", min_value=-100, max_value=100, step=1)
         search_value_input = st.text_input("Enter a value to search in the array:")
         search_button = st.button("Search")
     
-    if size and number:
+    array = []
+    if randomize_button and size:
         array = [random.randint(-100, 100) for _ in range(int(size))]
-        
+    
+    if array:
         odd_count, even_count = count_odd_even(array)
         
         SUM = sum(array)
