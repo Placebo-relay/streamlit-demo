@@ -70,7 +70,7 @@ def main():
     st.write(transpose2)
 
     if square1:
-        st.subheader("Matrix 1 Properties")
+        st.subheader("Matrix 1 (square) Properties")
         st.write("Determinant:", determinant1)
         st.write("Trace:", trace1)
         if invertible1:
@@ -78,9 +78,11 @@ def main():
             st.write(inverse1)
         else:
             st.write("Matrix 1 is not invertible.")
+    else:
+        st.write("Matrix 1 is not square.)
 
     if square2:
-        st.subheader("Matrix 2 Properties")
+        st.subheader("Matrix 2 (square) Properties")
         st.write("Determinant:", determinant2)
         st.write("Trace:", trace2)
         if invertible2:
@@ -88,6 +90,8 @@ def main():
             st.write(inverse2)
         else:
             st.write("Matrix 2 is not invertible.")
+    else:
+        st.write("Matrix 2 is not square.)
 
     st.subheader("Matrix Operations")
     st.write("Are the matrices equal?", "Yes" if equal else "No")
