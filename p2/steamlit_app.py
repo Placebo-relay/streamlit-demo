@@ -93,7 +93,7 @@ def main():
     else:
         st.subheader("Matrix 2 is not square.")
 
-    st.subheader("Matrix Operations")
+    st.subheader("Combo Operations")
     st.write("Are the matrices equal?", "Yes" if equal else "No")
 
     if addable:
