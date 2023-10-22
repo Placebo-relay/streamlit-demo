@@ -31,7 +31,7 @@ def main():
     with st.sidebar:
         size = st.number_input("Enter N size number of elements for [N]x1 array:", min_value=1, step=1)
         randomize_button = st.button("Randomize")
-        number = st.number_input("Guess a number in -100..100 to be randomed in 1x[N]:", min_value=-100, max_value=100, step=1)
+        number = st.number_input("Guess a number in -100..100 to be randomed in [N]x1:", min_value=-100, max_value=100, step=1)
         
     array = []
     if randomize_button and size:
@@ -51,7 +51,7 @@ def main():
         for num in array:
             PRODUCT *= num
         
-        st.write("\nArray:", array)
+        st.write("\nArray:", *array)
         st.write("Sum: {:,}".format(SUM))
         st.write("Product: {:,}".format(PRODUCT))
         st.write("\nMinimum Value:", min_value)
