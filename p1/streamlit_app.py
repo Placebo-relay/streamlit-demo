@@ -25,7 +25,7 @@ def main():
     st.title("Array Operations")
     
     st.write("______\n")
-    st.write("\n p1: [9] => T3,I3,M1: array operations on [N]x1 of random int\n")
+    st.write("\n p1: [9] => T3,I3,M1: array operations on [N]x1 of random int")
     st.write("______")
     
     with st.sidebar:
@@ -66,8 +66,8 @@ def main():
         st.write("\nMean: {:.2f}".format(mean))
         st.write("Geometric Mean: {:.2f}".format(geometric_mean))
         sorted_array = insertion_sort(array)
-        st.write("\nSorted Array (Ascending):", *sorted_array)
-        st.write("Sorted Array (Descending):", *sorted_array[::-1])
+        st.write("\nSorted by insertion Array (Ascending):", *sorted_array)
+        st.write("Sorted Array -reversed (Descending):", *sorted_array[::-1])
 
 if __name__ == "__main__":
     main()
