@@ -1,11 +1,5 @@
 import streamlit as st
 import random
-from sessionstate import SessionState
-
-def search_value(array, value):
-    indexes = [i for i, num in enumerate(array) if num == value]
-    count = len(indexes)
-    return indexes, count
 
 def count_odd_even(array):
     odd_count = sum(1 for num in array if num % 2 != 0)
@@ -16,25 +10,19 @@ def main():
     st.title("Array Operations")
     
     st.write("______\n")
-    st.write("\n p1: [9] => T3,I3,M1: array operations on 1x[N] of random int\n")
+    st.write("\n p1: [9] => T3,I3,M1: array operations on [N]x1 of random int\n")
     st.write("______")
     
-    session_state = SessionState.array_initialized(False)
-    
     with st.sidebar:
-        size = st.number_input("Enter N size number of elements for 1x[N] array:", min_value=1, step=1)
+        size = st.number_input("Enter N size number of elements for [N]x1 array:", min_value=1, step=1)
         randomize_button = st.button("Randomize")
         number = st.number_input("Guess a number in -100..100 to be randomed in 1x[N]:", min_value=-100, max_value=100, step=1)
-        search_value_input = st.text_input("Enter a value to search in the array:")
-        search_button = st.button("Search")
-    
-    if randomize_button and size:
-        session_state.array = [random.randint(-100, 100) for _ in range(int(size))]
-        session_state.array_initialized = True
-    
-    if session_state.array_initialized:
-        array = session_state.array
         
+    array = []
+    if randomize_button and size:
+        array = [random.randint(-100, 100) for _ in range(int(size))]
+    
+    if array:
         odd_count, even_count = count_odd_even(array)
         
         SUM = sum(array)
@@ -65,12 +53,6 @@ def main():
         sorted_array = sorted(array)
         st.write("\nSorted Array (Ascending):", sorted_array)
         st.write("Sorted Array (Descending):", sorted_array[::-1])
-        
-        if search_button and search_value_input:
-            search_value_input = int(search_value_input)
-            indexes, count = search_value(array, search_value_input)
-            st.write("Indexes:", indexes)
-            st.write("Count:", count)
 
 if __name__ == "__main__":
     main()
