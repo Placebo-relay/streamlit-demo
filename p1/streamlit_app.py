@@ -1,22 +1,15 @@
 import streamlit as st
 import random
 
-def count_odd_even(arr):
-    odd_count = 0
-    even_count = 0
-    
-    for num in arr:
-        if num % 2 == 0:
-            even_count += 1
-        else:
-            odd_count += 1
-    
-    return odd_count, even_count
-
 def search_value(array, value):
     indexes = [i for i, num in enumerate(array) if num == value]
     count = len(indexes)
     return indexes, count
+
+def count_odd_even(array):
+    odd_count = sum(1 for num in array if num % 2 != 0)
+    even_count = len(array) - odd_count
+    return odd_count, even_count
 
 def main():
     st.title("Array Operations")
@@ -43,7 +36,6 @@ def main():
     
     for num in array:
         PRODUCT *= num
-    
     st.write("\nArray:", array)
     st.write("Sum: {:,}".format(SUM))
     st.write("Product: {:,}".format(PRODUCT))
@@ -54,18 +46,13 @@ def main():
     st.write("\nNumber", number, "Presence:")
     st.write("Indexes:", guess_indexes)
     st.write("Count:", GUESS_COUNT)
-    
     mean = SUM / len(array)
     geometric_mean = PRODUCT ** (1 / len(array))
-    
     st.write("\nMean: {:.2f}".format(mean))
     st.write("Geometric Mean: {:.2f}".format(geometric_mean))
-    
     sorted_array = sorted(array)
-    
     st.write("\nSorted Array (Ascending):", sorted_array)
     st.write("Sorted Array (Descending):", sorted_array[::-1])
-    
     search_value_input = st.text_input("Enter a value to search in the array (type 666 to exit):")
     if search_value_input != '666':
         search_value_input = int(search_value_input)
