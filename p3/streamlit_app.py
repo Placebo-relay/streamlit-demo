@@ -12,7 +12,10 @@ def relocate_line(file_path, modified_file_path, n, m, log_file_path):
         lines = file.readlines()
 
     line_n = lines.pop(n-1)
-    lines.insert(m, line_n)
+    if n < m:
+        lines.insert(m-1, line_n)
+    else:
+        lines.insert(m, line_n)
 
     with open(modified_file_path, 'w') as file:
         file.writelines(lines)
