@@ -1,6 +1,6 @@
 import streamlit as st
-from streamlit import file_uploader
 import random
+import os
 
 def generate_random_file(file_path, num_lines):
     with open(file_path, 'w') as file:
@@ -36,24 +36,21 @@ def display_relocation_log(log_file_path):
     st.sidebar.text_area("Relocation Log", value=contents, height=200)
 
 def main():
-    # Add custom CSS to hide the GitHub button
-    hide_github_button = """
-    <style>
-    .css-1v3fvcr.e1q3nk1v0 {
-        visibility: hidden;
-    }
-    </style>
-    """
-    st.markdown(hide_github_button, unsafe_allow_html=True)    
-    
+    # Create a unique session ID for each user
+    session_id = st.report_thread.get_report_ctx().session_id
+
+    # Create a directory for each session/user
+    session_dir = f"session_data/{session_id}"
+    os.makedirs(session_dir, exist_ok=True)
+
+    file_path = os.path.join(session_dir, 'original_file.txt')
+    modified_file_path = os.path.join(session_dir, 'file_modified.txt')
+    log_file_path = os.path.join(session_dir, 'relocation_log.txt')
+
     st.title("Line Relocator")
 
     st.sidebar.title("Options")
     option = st.sidebar.radio("Select an option:", ("Upload File","Generate Random File",))
-
-    file_path = 'original_file.txt'
-    modified_file_path = 'file_modified.txt'
-    log_file_path = 'relocation_log.txt'
 
     if option == "Generate Random File":
         num_lines = st.sidebar.slider("Number of Lines", 5, 10, 5)
