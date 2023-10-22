@@ -1,4 +1,3 @@
-pip
 numpy
-streamlit-hide-url
+#streamlit-hide-url
 os
