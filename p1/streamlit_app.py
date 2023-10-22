@@ -6,6 +6,11 @@ def count_odd_even(array):
     even_count = len(array) - odd_count
     return odd_count, even_count
 
+def search_value(array, value):
+    indexes = [i for i, num in enumerate(array) if num == value]
+    count = len(indexes)
+    return indexes, count
+
 def insertion_sort(array):
     for i in range(1, len(array)):
         key = array[i]
