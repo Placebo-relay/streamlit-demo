@@ -1,4 +1,4 @@
---upgrade pip
+pip
 numpy
 streamlit-hide-url
 os
