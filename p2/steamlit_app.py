@@ -1,23 +1,21 @@
 import streamlit as st
 import numpy as np
 
-def get_matrix_input(rows, cols):
-    matrix = np.zeros((rows, cols))
-    for i in range(rows):
-        for j in range(cols):
-            matrix[i, j] = st.number_input(f"Enter value for [{i}, {j}]", key=f"matrix_{i}_{j}")
-    return matrix
-
 def main():
     st.title("Matrix Operations")
 
-    rows1 = st.number_input("Enter the number of rows for the first matrix", min_value=1, value=1)
-    cols1 = st.number_input("Enter the number of columns for the first matrix", min_value=1, value=1)
-    matrix1 = get_matrix_input(int(rows1), int(cols1))
+    print("______\n")
+    print("\n p2: [9] => T6: matrix operations on 2x[M]x[N] of double\n")
+    print("______")
 
-    rows2 = st.number_input("Enter the number of rows for the second matrix", min_value=1, value=1)
-    cols2 = st.number_input("Enter the number of columns for the second matrix", min_value=1, value=1)
-    matrix2 = get_matrix_input(int(rows2), int(cols2))
+    rows1 = st.number_input("number of rows for the first matrix", min_value=1, value=1)
+    cols1 = st.number_input("number of columns for the first matrix", min_value=1, value=1)
+
+    rows2 = st.number_input("number of rows for the second matrix", min_value=1, value=1)
+    cols2 = st.number_input("number of columns for the second matrix", min_value=1, value=1)
+
+    matrix1 = np.random.randn(rows1, cols1) * 100.0
+    matrix2 = np.random.randn(rows2, cols2) * 100.0
 
     rank1 = np.linalg.matrix_rank(matrix1)
     rank2 = np.linalg.matrix_rank(matrix2)
