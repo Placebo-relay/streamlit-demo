@@ -1,3 +1,2 @@
 numpy
-tempfile
-#streamlit-hide-url
+streamlit-hide-url
