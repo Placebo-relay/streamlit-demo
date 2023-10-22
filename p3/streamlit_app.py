@@ -1,5 +1,6 @@
 import streamlit as st
 import random
+import tempfile
 import os
 
 def generate_random_file(file_path, num_lines):
@@ -39,9 +40,8 @@ def main():
     # Create a unique session ID for each user
     session_id = st.report_thread.get_report_ctx().session_id
 
-    # Create a directory for each session/user
-    session_dir = f"session_data/{session_id}"
-    os.makedirs(session_dir, exist_ok=True)
+    # Create a temporary directory for each session/user
+    session_dir = tempfile.mkdtemp(prefix=session_id)
 
     file_path = os.path.join(session_dir, 'original_file.txt')
     modified_file_path = os.path.join(session_dir, 'file_modified.txt')
