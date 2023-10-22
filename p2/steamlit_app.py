@@ -79,7 +79,7 @@ def main():
         else:
             st.write("Matrix 1 is not invertible.")
     else:
-        st.write("Matrix 1 is not square.)
+        st.write("Matrix 1 is not square.")
 
     if square2:
         st.subheader("Matrix 2 (square) Properties")
@@ -91,7 +91,7 @@ def main():
         else:
             st.write("Matrix 2 is not invertible.")
     else:
-        st.write("Matrix 2 is not square.)
+        st.write("Matrix 2 is not square.")
 
     st.subheader("Matrix Operations")
     st.write("Are the matrices equal?", "Yes" if equal else "No")
