@@ -99,6 +99,32 @@ def get_l_values(num_l):
 
 
 def main():
+    # Add custom CSS to hide the GitHub button
+    hide_menu = """
+    <style>
+    header {
+        visibility: hidden;
+    }
+    #MainMenu {
+        visibility: hidden;
+    }
+    
+    footer {
+        visibility: hidden;
+    }
+    footer:after{
+        visibility: visible;
+        Content:"Demo for fpractice. Copyright @ 2023";
+        display: block;
+        position: relative;
+        padding: 5px;
+        top:3px;
+        color: tomato;
+        text-align: left;
+    </style>
+    """
+    st.markdown(hide_menu, unsafe_allow_html=True)
+    
     st.title("Pendulum Period Calculator")
     st.write("This app calculates and visualizes the period of a pendulum for different combinations of l and phi0.")
 
