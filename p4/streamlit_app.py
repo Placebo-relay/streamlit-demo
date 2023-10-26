@@ -69,7 +69,7 @@ footer:after{
 """
 st.markdown(hide_menu, unsafe_allow_html=True)
 
-
+st.title("Mathematical pendulum")
 st.latex(r"T = 4 \sqrt{\frac{l}{g}} \cdot \text{ellipk}(\sin^2(\frac{\phi_0}{2}))")
 # Define the bounds and step size
 a_min = -np.pi / 2
