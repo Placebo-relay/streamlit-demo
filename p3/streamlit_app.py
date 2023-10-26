@@ -40,14 +40,30 @@ def display_relocation_log(log_file_path):
 
 def main():
     # Add custom CSS to hide the GitHub button
-    hide_github_button = """
+    hide_menu = """
     <style>
-    .css-1v3fvcr.e1q3nk1v0 {
+    header {
         visibility: hidden;
     }
+    #MainMenu {
+        visibility: hidden;
+    }
+    
+    footer {
+        visibility: hidden;
+    }
+    footer:after{
+        visibility: visible;
+        Content:"Demo for fpractice. Copyright @ 2023";
+        display: block;
+        position: relative;
+        padding: 5px;
+        top:3px;
+        color: tomato;
+        text-align: left;
     </style>
     """
-    st.markdown(hide_github_button, unsafe_allow_html=True)    
+    st.markdown(hide_menu, unsafe_allow_html=True)
     
     st.title("Line Relocator")
 
