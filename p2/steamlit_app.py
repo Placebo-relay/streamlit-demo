@@ -2,6 +2,32 @@ import streamlit as st
 import numpy as np
 
 def main():
+    # Add custom CSS to hide the GitHub button
+    hide_menu = """
+    <style>
+    header {
+        visibility: hidden;
+    }
+    #MainMenu {
+        visibility: hidden;
+    }
+    
+    footer {
+        visibility: hidden;
+    }
+    footer:after{
+        visibility: visible;
+        Content:"Demo for fpractice. Copyright @ 2023";
+        display: block;
+        position: relative;
+        padding: 5px;
+        top:3px;
+        color: tomato;
+        text-align: left;
+    </style>
+    """
+    st.markdown(hide_menu, unsafe_allow_html=True)
+    
     st.title("Matrix Operations")
 
     print("______\n")
