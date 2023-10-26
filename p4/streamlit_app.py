@@ -105,7 +105,7 @@ if st.button("Calculate"):
         for line in lines:
             try:
                 value = float(line)
-                if value <= 0:  # Exclude invalid values
+                if value > 0:  # Take valid values
                     valid_values.add(value)
                 else:
                     st.write(f"Invalid value: {line}")
