@@ -50,7 +50,7 @@ header {
     visibility: hidden;
 }
 #MainMenu {
-    visibility: visible;
+    visibility: hidden;
 }
 
 footer {
