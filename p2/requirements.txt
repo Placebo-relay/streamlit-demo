@@ -1,2 +1,1 @@
 numpy
-streamlit-hide-url
