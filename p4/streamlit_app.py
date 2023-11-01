@@ -54,22 +54,13 @@ def calculate_and_display_data(a, b, l_values):
             with st.sidebar.expander(f"Data l={l}"):
                 st.write("global min_T, max_T")
                 st.write(min_T, max_T)
-                # Create your DataFrame
+                # DataFrame
                 df = pd.DataFrame(l_data, columns=['phi0', 'T'])
-
-                # Apply style to highlight both min and max values for column 'T'
-                styled_df = df.style.highlight_min(subset=['T']).highlight_max(subset=['T'])
-
-                # Create a title row DataFrame
                 title_row = pd.DataFrame({'phi0': [f'range: {a,b}'], 'T': [f'T(phi0, l={l})']})
+                df_with_title = pd.concat([title_row, df], ignore_index=True)
+                
 
-                # Convert the styled DataFrame to HTML
-                styled_html = styled_df.render()
-
-                # Concatenate the title row DataFrame with the HTML representation of the styled DataFrame
-                df_with_title = pd.concat([title_row, pd.DataFrame({'styled': [styled_html]})], axis=0, ignore_index=True)
-
-                # Display the DataFrame with the title/comment and applied styling in Streamlit
+                # Display the DataFrame with the title/comment in Streamlit
                 st.write(df_with_title)
 
 
