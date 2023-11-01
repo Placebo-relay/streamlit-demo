@@ -47,9 +47,19 @@ def calculate_and_display_data(a, b, l_values):
         st.pyplot(fig)
         
         for i, (l, l_data) in enumerate(data):
-            st.sidebar.subheader(f"l = {l}")
-            df = pd.DataFrame(l_data, columns=['phi0', 'T'])
-            st.sidebar.write(df)
+            # Create an expander for each DataFrame
+            with st.sidebar.expander(f"Toggle DataFrame {i+1}"):
+            # Create a checkbox to toggle the visibility of the DataFrame
+                show_df = st.checkbox("Show DataFrame", value=True)
+                # Display the DataFrame if the checkbox is checked
+                if show_df:
+                    df = pd.DataFrame(l_data, columns=['phi0', 'T'])
+                    st.write(df)
+                    
+                    # Save the DataFrame as a CSV file with the title
+                    filename = f"DataFrame_l_{l}.csv"
+                    df.to_csv(filename, index=False)
+
 
 # Add custom CSS to hide the GitHub button
 hide_menu = """
