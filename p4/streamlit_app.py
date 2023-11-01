@@ -29,6 +29,7 @@ def plot_data(data):
     ax.legend()
     return fig
 
+@st.cache_data
 def calculate_and_display_data(a, b, l_values):
     phi0_values = np.linspace(a, b, 1000)
     data = save_data(l_values, phi0_values)
