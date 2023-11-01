@@ -56,12 +56,18 @@ def calculate_and_display_data(a, b, l_values):
                 st.write(min_T, max_T)
                 # DataFrame
                 df = pd.DataFrame(l_data, columns=['phi0', 'T'])
+                
+                # Apply style to highlight both min and max values for column 'T'
+                styled_df = df.style.highlight_min(subset=['T']).highlight_max(subset=['T'])
+
+                # Create a title row DataFrame
                 title_row = pd.DataFrame({'phi0': [f'range: {a,b}'], 'T': [f'T(phi0, l={l})']})
-                df_with_title = pd.concat([title_row, df], ignore_index=True)
-                styled_df = df_with_title.style.highlight_min(subset=['T']).highlight_max(subset=['T'])
+
+                # Concatenate the title row DataFrame with the styled DataFrame vertically
+                df_with_title = pd.concat([title_row, styled_df], axis=0, ignore_index=True)
 
                 # Display the DataFrame with the title/comment in Streamlit
-                st.dataframe(styled_df)
+                st.write(df_with_title)
 
 
 # Add custom CSS to hide the GitHub button
