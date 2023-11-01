@@ -29,7 +29,6 @@ def plot_data(data):
     ax.legend()
     return fig
     
-@st.cache
 def calculate_and_display_data(a, b, l_values):
     phi0_values = np.linspace(a, b, 1000)
     data = save_data(l_values, phi0_values)
@@ -40,7 +39,8 @@ def calculate_and_display_data(a, b, l_values):
         
         for i, (l, l_data) in enumerate(data):
             st.sidebar.write(f"l = {l}")
-            show_table = st.sidebar.checkbox(f"Show Table {i+1}", value=True)
+            show_table = st.sidebar.checkbox(f"Show Table {i+1}", value=st.session_state.get(f"show_table_{i+1}", True))
+            st.session_state[f"show_table_{i+1}"] = show_table
             if show_table:
                 st.write(f"#l = {l}")
                 st.table(l_data)
