@@ -49,16 +49,13 @@ def calculate_and_display_data(a, b, l_values):
         for i, (l, l_data) in enumerate(data):
             # Create an expander for each DataFrame
             with st.sidebar.expander(f"Toggle DataFrame {i+1}"):
-            # Create a checkbox to toggle the visibility of the DataFrame
-                show_df = st.checkbox("Show DataFrame", value=True)
-                # Display the DataFrame if the checkbox is checked
-                if show_df:
-                    df = pd.DataFrame(l_data, columns=['phi0', 'T'])
-                    st.write(df)
-                    
-                    # Save the DataFrame as a CSV file with the title
-                    filename = f"DataFrame_l_{l}.csv"
-                    df.to_csv(filename, index=False)
+            # DataFrame
+            df = pd.DataFrame(l_data, columns=['phi0', 'T'])
+            title_row = pd.DataFrame({'phi0': [f'angle in {a,b}'], 'T': [f'T(phi0,l={l}']})
+            df_with_title = pd.concat([title_row, df], ignore_index=True)
+
+            # Display the DataFrame with the title/comment in Streamlit
+            st.write(df_with_title)
 
 
 # Add custom CSS to hide the GitHub button
