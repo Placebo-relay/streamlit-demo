@@ -41,7 +41,7 @@ def calculate_and_display_data(a, b, l_values):
             st.sidebar.write(f"l = {l}")
             show_table = st.sidebar.checkbox(f"Show Table {i+1}", value=True)
             if show_table:
-                st.write("#l = {l}
+                st.write(f"#l = {l}")
                 st.table(l_data)
 
 # Add custom CSS to hide the GitHub button
