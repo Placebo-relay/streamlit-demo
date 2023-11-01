@@ -43,10 +43,10 @@ def calculate_and_display_data(a, b, l_values):
     data, min_T, max_T = save_data(l_values, phi0_values)
     
     if data:
-        fig = plot_data(data)
-        st.pyplot(fig)
         st.write("global min_T, max_T:")
         st.write(min_T, max_T)
+        fig = plot_data(data)
+        st.pyplot(fig)
         
         for i, (l, l_data) in enumerate(data):
 
