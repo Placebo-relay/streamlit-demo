@@ -47,7 +47,7 @@ def calculate_and_display_data(a, b, l_values):
         st.pyplot(fig)
         
         for i, (l, l_data) in enumerate(data):
-            st.sidebar.write(f'T: min = {min_T}\nT: max = {max_T})
+            st.sidebar.write(f'T: min = {min_T}\nT: max = {max_T}')
             # Create an expander for each DataFrame
             with st.sidebar.expander(f"Data l={l}"):
                 st.write('min_T,max_T)
