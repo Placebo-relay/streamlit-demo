@@ -45,6 +45,8 @@ def calculate_and_display_data(a, b, l_values):
     if data:
         fig = plot_data(data)
         st.pyplot(fig)
+        st.write("global min_T, max_T:")
+        st.write(min_T, max_T)
         
         for i, (l, l_data) in enumerate(data):
 
