@@ -41,6 +41,7 @@ def calculate_and_display_data(a, b, l_values):
             st.sidebar.write(f"l = {l}")
             show_table = st.sidebar.checkbox(f"Show Table {i+1}", value=True)
             if show_table:
+                st.write("#l = {l}
                 st.table(l_data)
 
 # Add custom CSS to hide the GitHub button
@@ -76,7 +77,7 @@ a_min = -np.pi / 2
 a_max = np.pi / 2
 b_min = 0.0
 b_max = np.pi / 2
-step_size = np.pi / 10
+step_size = np.pi / 20
 
 # Create the dual-slider
 a, b = st.slider("angle", a_min, a_max, (a_min, b_max), step=step_size)
