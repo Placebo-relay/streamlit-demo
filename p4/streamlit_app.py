@@ -58,9 +58,10 @@ def calculate_and_display_data(a, b, l_values):
                 df = pd.DataFrame(l_data, columns=['phi0', 'T'])
                 title_row = pd.DataFrame({'phi0': [f'range: {a,b}'], 'T': [f'T(phi0, l={l})']})
                 df_with_title = pd.concat([title_row, df], ignore_index=True)
+                styled_df = df_with_title.style.highlight_min(subset=['T']).highlight_max(subset=['T'])
 
                 # Display the DataFrame with the title/comment in Streamlit
-                st.write(df_with_title)
+                st.dataframe(styled_df)
 
 
 # Add custom CSS to hide the GitHub button
