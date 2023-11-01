@@ -49,13 +49,13 @@ def calculate_and_display_data(a, b, l_values):
         for i, (l, l_data) in enumerate(data):
             # Create an expander for each DataFrame
             with st.sidebar.expander(f"Toggle DataFrame {i+1}"):
-            # DataFrame
-            df = pd.DataFrame(l_data, columns=['phi0', 'T'])
-            title_row = pd.DataFrame({'phi0': [f'angle in {a,b}'], 'T': [f'T(phi0,l={l}']})
-            df_with_title = pd.concat([title_row, df], ignore_index=True)
+                # DataFrame
+                df = pd.DataFrame(l_data, columns=['phi0', 'T'])
+                title_row = pd.DataFrame({'phi0': [f'angle in {a,b}'], 'T': [f'T(phi0,l={l}']})
+                df_with_title = pd.concat([title_row, df], ignore_index=True)
 
-            # Display the DataFrame with the title/comment in Streamlit
-            st.write(df_with_title)
+                # Display the DataFrame with the title/comment in Streamlit
+                st.write(df_with_title)
 
 
 # Add custom CSS to hide the GitHub button
