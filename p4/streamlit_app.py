@@ -48,10 +48,11 @@ def calculate_and_display_data(a, b, l_values):
         
         for i, (l, l_data) in enumerate(data):
             # Create an expander for each DataFrame
-            with st.sidebar.expander(f"Toggle DataFrame {i+1}"):
+            with st.sidebar.expander(f"Data l={l}"):
+                st.write(min_T, max_T)
                 # DataFrame
                 df = pd.DataFrame(l_data, columns=['phi0', 'T'])
-                title_row = pd.DataFrame({'phi0': [f'angle in {a,b}'], 'T': [f'T(phi0,l={l}']})
+                title_row = pd.DataFrame({'phi0': [f'range: {a,b}'], 'T': [f'T(phi0, l={l})']})
                 df_with_title = pd.concat([title_row, df], ignore_index=True)
 
                 # Display the DataFrame with the title/comment in Streamlit
