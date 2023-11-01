@@ -2,6 +2,7 @@ import numpy as np
 from scipy.special import ellipk
 import matplotlib.pyplot as plt
 import streamlit as st
+import pandas as pd
 
 def calculate_period(phi0, l):
     g = 9.8  # acceleration due to gravity
@@ -10,14 +11,22 @@ def calculate_period(phi0, l):
 
 def save_data(l_values, phi0_values):
     data = []
+    minT = np.inf  # Initialize minT with a large value
+    maxT = -np.inf  # Initialize maxT with a small value
+    
     for i, l in enumerate(l_values):
         l_data = []
         for phi0 in phi0_values:
             T = calculate_period(phi0, l)
             l_data.append((phi0, T))
+            
+            # Update minT and maxT if necessary
+            minT = min(minT, T)
+            maxT = max(maxT, T)
+        
         data.append((l, l_data))
     
-    return data
+    return data, minT, maxT
 
 def plot_data(data):
     fig, ax = plt.subplots()
@@ -31,19 +40,16 @@ def plot_data(data):
     
 def calculate_and_display_data(a, b, l_values):
     phi0_values = np.linspace(a, b, 1000)
-    data = save_data(l_values, phi0_values)
+    data, min_T, max_T = save_data(l_values, phi0_values)
     
     if data:
         fig = plot_data(data)
         st.pyplot(fig)
         
         for i, (l, l_data) in enumerate(data):
-            st.sidebar.write(f"l = {l}")
-            show_table = st.sidebar.checkbox(f"Show Table {i+1}", value=st.session_state.get(f"show_table_{i+1}", True))
-            st.session_state[f"show_table_{i+1}"] = show_table
-            if show_table:
-                st.write(f"#l = {l}")
-                st.table(l_data)
+            st.sidebar.subheader(f"l = {l}")
+            df = pd.DataFrame(l_data, columns=['phi0', 'T'])
+            st.sidebar.write(df)
 
 # Add custom CSS to hide the GitHub button
 hide_menu = """
