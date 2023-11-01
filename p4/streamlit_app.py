@@ -50,7 +50,7 @@ def calculate_and_display_data(a, b, l_values):
 
             # Create an expander for each DataFrame
             with st.sidebar.expander(f"Data l={l}"):
-                st.write("min_T, max_T")
+                st.write("global min_T, max_T")
                 st.write(min_T, max_T)
                 # DataFrame
                 df = pd.DataFrame(l_data, columns=['phi0', 'T'])
