@@ -91,10 +91,10 @@ def main():
     hide_menu = """
     <style>
     header {
-        visibility: visible;
+        visibility: hidden;
     }
     #MainMenu {
-        visibility: visible;
+        visibility: hidden;
     }
     
     footer {
