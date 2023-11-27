@@ -97,7 +97,7 @@ a_min = 0.0
 a_max = np.pi / 18
 b_min = 0.0
 b_max = np.pi / 18
-step_size = np.pi / 360
+step_size = "{:.5f}".format(np.pi / 360)
 
 # Create the dual-slider
 a, b = st.slider("angle", a_min, a_max, (a_min, b_max), step=step_size)
