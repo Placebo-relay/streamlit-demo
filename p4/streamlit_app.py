@@ -100,7 +100,7 @@ b_max = 10
 step_size = 0.25
 
 # Create the dual-slider
-a, b = st.slider("angle", a_min, a_max, (a_min, b_max), step=step_size)
+a, b = st.slider("angle", a_min, a_max, (b_min, b_max), step=step_size)
 
 # Convert the bounds to LaTeX format
 a_latex = "0"
