@@ -6,7 +6,7 @@ import pandas as pd
 
 def calculate_period(phi0, l):
     g = 9.8  # acceleration due to gravity
-    T = 4 * np.sqrt(l / g) * ellipk(np.sin(phi0 / 2))
+    T = 4 * np.sqrt(l / g) * ellipk(np.sin(np.deg2rad(phi0) / 2))
     return T
 
 def save_data(l_values, phi0_values):
@@ -94,17 +94,17 @@ st.title("Mathematical pendulum")
 st.latex(r"T = 4 \sqrt{\frac{l}{g}} \cdot \text{ellipk}(\sin^2(\frac{\phi_0}{2}))")
 # Define the bounds and step size
 a_min = 0.0
-a_max = np.pi / 18
+a_max = 10
 b_min = 0.0
-b_max = np.pi / 18
-step_size = "{:.5f}".format(np.pi / 360)
+b_max = 10
+step_size = 0.25
 
 # Create the dual-slider
 a, b = st.slider("angle", a_min, a_max, (a_min, b_max), step=step_size)
 
 # Convert the bounds to LaTeX format
 a_latex = "0"
-b_latex = r"\frac{\pi}{18}"
+b_latex = r"10\degree"
 
 # Display the dual-slider with pretty LaTeX bounds
 st.latex(f"{a_latex} \leq \phi_0 \leq {b_latex}")
