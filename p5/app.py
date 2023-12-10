@@ -33,7 +33,7 @@ st.markdown(hide_menu, unsafe_allow_html=True)
 
 st.title("Dynamics of a material point")
 st.markdown("## Free descent of a cable car 🚡")
-st.markdown("### 👈 sidebar to adjust ℹ️ and see layout 🍎")
+st.markdown("### >👈 sidebar: ℹ️ 🍎")
 st.markdown("🎨: Position🔵, Velocity🔴")
 
 
