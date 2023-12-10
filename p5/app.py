@@ -36,7 +36,9 @@ st.markdown("## Free descent of a cable car 🚡")
 st.markdown("### 👈 sidebar to adjust ℹ️ and see layout 🍎")
 st.markdown("🎨: Position🔵, Velocity🔴")
 
-image = st.sidebar.image('https://github.com/Placebo-relay/streamlit-demo/blob/main/p5%2FFORCES.png', caption='Forces layout 🍎', use_column_width=True)
+
+image_url = "https://raw.githubusercontent.com/Placebo-relay/streamlit-demo/main/FORCES.png"
+image = st.sidebar.image(image_url, caption='Forces layout 🍎', use_column_width=True)
 
 # Sidebar widgets
 st.sidebar.title("Parameters ℹ️")
