@@ -4,6 +4,33 @@ import altair as alt
 import numpy as np
 import pandas as pd
 
+
+# Add custom CSS to hide the GitHub button
+hide_menu = """
+<style>
+header {
+    visibility: hidden;
+}
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+footer:after{
+    visibility: visible;
+    Content:"Demo for fpractice. Copyright @ 2023";
+    display: block;
+    position: relative;
+    padding: 5px;
+    top:3px;
+    color: tomato;
+    text-align: left;
+</style>
+"""
+st.markdown(hide_menu, unsafe_allow_html=True)
+
 st.title("Dynamics of a material point")
 st.markdown("## Free descent of a cable car 🚡")
 st.markdown("### 👈 sidebar to adjust ℹ️ and see layout 🍎")
