@@ -129,7 +129,7 @@ with col2:
         st.write(find_largest_area(emoji_matrix, selected_item))
 
         
-emoji_matrix = pd.DataFrame(emoji_matrix)
+emoji_matrix = pd.DataFrame(emoji_matrix, use_container_width=True)
 
 
 
