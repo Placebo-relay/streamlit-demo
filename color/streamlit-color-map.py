@@ -119,9 +119,9 @@ col1, col2, col3   = st.columns([1,1,3])
 
 # External toggle
 with col1:    
-    if st.button("Clear 🗑️"):
+    if st.button("Unsafe Clear 🗑️"):
         st.cache_data.clear()
-        st.write('🗑️ = 🎲')    
+        st.write('🗑️ = 🎲')
 
 with col2:
     if highlight_toggle:
@@ -141,6 +141,6 @@ else:
 # Print the result
 st.markdown("### Stats 📊")
 
-f"The largest area size is {max_area_size} by {max_area_emoji}."
+f"The largest area size is {max_area_size} by {sorted(max_area_emoji)}."
 if (min_area_size != max_area_size):
     f"The smallest area size is {min_area_size} by {sorted(min_area_emoji)}."
