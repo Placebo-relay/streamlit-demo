@@ -129,16 +129,14 @@ with col2:
         st.write(find_largest_area(emoji_matrix, selected_item))
 
         
-emoji_matrix = pd.DataFrame(emoji_matrix, use_container_width=True)
-
-
+emoji_matrix = pd.DataFrame(emoji_matrix)
 
 # Display DataFrame with highlighting
 if highlight_toggle:
     highlighted_df = emoji_matrix.style.apply(lambda x: ['background-color: yellow' if item == selected_item else '' for item in x], axis=1)
-    st.dataframe(highlighted_df)
+    st.dataframe(highlighted_df, use_container_width=True)
 else:
-    st.dataframe(emoji_matrix)
+    st.dataframe(emoji_matrix, use_container_width=True)
 
 # Print the result
 st.markdown("### Stats 📊")
