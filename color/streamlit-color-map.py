@@ -18,7 +18,7 @@ footer {
 }
 footer:after{
     visibility: visible;
-    Content:"Demo for fpractice. Copyright @ 2023";
+    Content:"Demo for Technologies of Programming. Copyright @ 2023";
     display: block;
     position: relative;
     padding: 5px;
