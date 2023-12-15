@@ -60,15 +60,15 @@ def find_largest_area(emoji_matrix, emoji):
 
 choice1 = ['🟥', '🟩', '🟦', '🟨', '🟧', '🟪', '🟫', '⬜', '⬛']
 choice2 = ["😀", "🥶", "😍", "👿", "😭", "🤪", "🤮", "😴"]
-choice3 = ['1', '2', '3', '4', '5', '6', '7']
-choice0 = ["🪆", "🚀", "🦄","🪸","👻","🥞","🦀","👾", "🐍", "🌪️"]
+choice3 = ["🎄", "🎁", "🦌", "❄️", "☃️", "🎅","🐧"]
+choice0 = ["🕊️", "🚀", "⚔️","🪆️","👻","🔥","🦀","💣", "🐍", "🌪️"]
 choice4 = ["🇨🇳","🇺🇸","🇷🇺","🇵🇸","🇮🇳","🇺🇦","🇮🇱"]
 
 my_dict = {
     'x10 Emojis 🪆': choice0,
     'x9 Colors 🟥': choice1,
     'x8 Face Emojis 😀': choice2,
-    'x7 Plain Numbers 123': choice3,
+    'x7 Christmas Emojis 🎄': choice3,
     'x6 Countries 🇨🇳': choice4
 }
 
