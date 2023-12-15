@@ -144,7 +144,9 @@ st.markdown("### Stats 📊")
 f"The largest area size is {max_area_size} by {sorted(max_area_emoji)}."
 if (min_area_size != max_area_size):
     f"The smallest area size is {min_area_size} by {sorted(min_area_emoji)}."
-    
+   
+st.markdown("### Code snapshot ✂️")
+
 body = """
 def find_largest_area(emoji_matrix, emoji):
     # Convert emoji matrix to binary matrix
