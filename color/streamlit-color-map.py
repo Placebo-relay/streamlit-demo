@@ -148,6 +148,8 @@ if (min_area_size != max_area_size):
 st.markdown("### Code snapshot ✂️")
 
 body = """
+
+
 def find_largest_area(emoji_matrix, emoji):
     # Convert emoji matrix to binary matrix
     binary_matrix = np.where(emoji_matrix == emoji, 1, 0)
@@ -198,4 +200,4 @@ def find_largest_area(emoji_matrix, emoji):
     return largest_area_size
             """
             
-st.code(body, language="python", line_numbers=True)
+st.code(body, language="python", line_numbers=False)
