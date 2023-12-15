@@ -172,17 +172,21 @@ def find_largest_area(emoji_matrix, emoji):
                 labeled_matrix[i, j] = current_label
 
                 while stack:
-		# EXPLORE NEIGHBORHOOD OF LAST ADDED, POP IT
+                # EXPLORE NEIGHBORHOOD OF LAST ADDED, POP IT
                     x, y = stack.pop()
 
                     neighbors = [(x-1, y), (x+1, y), (x, y-1), (x, y+1)]
-		    # iterate over neigbors
+                    
+                    # ITERATE over neigbors
                     for neighbor in neighbors:
                         nx, ny = neighbor
-
-                        if 0 <= nx < binary_matrix.shape[0] and 0 <= ny < binary_matrix.shape[1]:
-			# ADD TO STACK IF not yet labeled AND is 1
-                            if binary_matrix[nx, ny] == 1 and labeled_matrix[nx, ny] == 0:
+                        x_in_range = (0 <= nx < binary_matrix.shape[0])
+                        y_in_range = (0 <= ny < binary_matrix.shape[1])
+                        if x_in_range and y_in_range:
+                        # ADD TO STACK IF not yet labeled AND is 1
+                            is_one = (binary_matrix[nx, ny] == 1)
+                            is_labeled = (labeled_matrix[nx, ny] == 0)
+                            if is_one and is_labeled:
                                 stack.append((nx, ny))
                                 labeled_matrix[nx, ny] = current_label
 
@@ -193,7 +197,7 @@ def find_largest_area(emoji_matrix, emoji):
     if num_labels == 0:
         return 0
 
-    # Count the size of each labeled area (those that are not 0, this will give smth like 111 22 3333)
+    # Count the size of each labeled area (111 22 3333)
     area_sizes = np.bincount(labeled_matrix.flatten())[1:]
 
     # Find the largest area
