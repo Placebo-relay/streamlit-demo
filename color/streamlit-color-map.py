@@ -198,4 +198,4 @@ def find_largest_area(emoji_matrix, emoji):
     return largest_area_size
             """
             
-st.code(body, language="python", line_numbers=False)
+st.code(body, language="python", line_numbers=True)
