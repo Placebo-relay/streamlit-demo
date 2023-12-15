@@ -144,3 +144,56 @@ st.markdown("### Stats 📊")
 f"The largest area size is {max_area_size} by {sorted(max_area_emoji)}."
 if (min_area_size != max_area_size):
     f"The smallest area size is {min_area_size} by {sorted(min_area_emoji)}."
+    
+body = """
+def find_largest_area(emoji_matrix, emoji):
+    # Convert emoji matrix to binary matrix
+    binary_matrix = np.where(emoji_matrix == emoji, 1, 0)
+
+    # Label connected components manually
+    labeled_matrix = np.zeros_like(binary_matrix)
+    current_label = 1
+
+    for i in range(binary_matrix.shape[0]):
+        for j in range(binary_matrix.shape[1]):
+
+	# MAIN: if not labeled in labeled_matrix, and is 1 in binary
+
+            if binary_matrix[i, j] == 1 and labeled_matrix[i, j] == 0:
+
+		# INIT STACK
+                stack = [(i, j)]
+                labeled_matrix[i, j] = current_label
+
+                while stack:
+		# EXPLORE NEIGHBORHOOD OF LAST ADDED, POP IT
+                    x, y = stack.pop()
+
+                    neighbors = [(x-1, y), (x+1, y), (x, y-1), (x, y+1)]
+		    # iterate over neigbors
+                    for neighbor in neighbors:
+                        nx, ny = neighbor
+
+                        if 0 <= nx < binary_matrix.shape[0] and 0 <= ny < binary_matrix.shape[1]:
+			# ADD TO STACK IF not yet labeled AND is 1
+                            if binary_matrix[nx, ny] == 1 and labeled_matrix[nx, ny] == 0:
+                                stack.append((nx, ny))
+                                labeled_matrix[nx, ny] = current_label
+
+                current_label += 1
+
+    # Check if there are any labeled areas
+    num_labels = current_label - 1
+    if num_labels == 0:
+        return 0
+
+    # Count the size of each labeled area (those that are not 0, this will give smth like 111 22 3333)
+    area_sizes = np.bincount(labeled_matrix.flatten())[1:]
+
+    # Find the largest area
+    largest_area_size = np.max(area_sizes)
+
+    return largest_area_size
+            """
+            
+st.code(body, language="python", line_numbers=False)
