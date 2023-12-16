@@ -202,3 +202,5 @@ chart_yx += alt.Chart(data).mark_line(strokeDash=[5, 5]).encode(
 st.altair_chart(chart_y, use_container_width=True)
 st.altair_chart(chart_x, use_container_width=True)
 st.altair_chart(chart_yx, use_container_width=True)
+
+st.success("Complete")
