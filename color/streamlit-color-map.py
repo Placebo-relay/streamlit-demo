@@ -64,7 +64,7 @@ choice3 = ["1", "2", "3", "4", "5", "6","7"]
 choice0 = ["🎲", "🚀", "🎁","👻","🎄","🦀","👾", "🐍", "🔥", "🌊"]
 
 my_dict = {
-    'x10 Emojis 🪆': choice0,
+    'x10 Emojis 🎲': choice0,
     'x9 Colors 🟥': choice1,
     'x8 Face Emojis 😀': choice2,
     'x7 Plain Numbers 123': choice3
