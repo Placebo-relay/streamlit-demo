@@ -42,7 +42,7 @@ image = st.sidebar.image(image_url, caption='Forces layout 🍎', use_column_wid
 
 # Sidebar widgets
 st.sidebar.title("Parameters ℹ️")
-mu = st.sidebar.number_input("Coefficient of friction", value=430, min_value=100, max_value=1000)
+mu = st.sidebar.number_input("Coefficient of friction", value=430, min_value=300, max_value=1000)
 m = st.sidebar.number_input("Mass", value=500, min_value=100, max_value=1000)
 U = st.sidebar.number_input("Environmental force", value=3, min_value=1, max_value=10)
 g = st.sidebar.number_input("Acceleration due to gravity", value=9.8, min_value=9.0, max_value=10.0)
