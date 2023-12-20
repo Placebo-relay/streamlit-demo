@@ -94,10 +94,12 @@ st.title("Mathematical pendulum")
 st.latex(r"T = 4 \sqrt{\frac{l}{g}} \cdot \text{ellipk}(\sin^2(\frac{\phi_0}{2}))")
 # Define the bounds and step size
 a_min = 0.0
-a_max = 10
+a_max = math.pi / 2
+b_min = 0.01
+b_max = math.pi / 2 - 0.01
 
 # Create the dual-slider
-a, b = st.slider("angle displacement", a_min, a_max, (0,10))
+a, b = st.slider("Angle Displacement", a_min, a_max, (0.0, math.pi / 2), format="%.2f")
 
 # Convert the bounds to LaTeX format
 a_latex = "0"
