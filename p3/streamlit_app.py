@@ -70,13 +70,11 @@ def main():
     st.title("Line Relocator")
 
     st.sidebar.title("Options")
-    option = st.sidebar.radio("Select an option:", ("Upload File","Generate Random File",))
+    option = st.sidebar.radio("Select an option:", ("Generate Random File", "Upload File"))
 
     file_path = 'original_file.txt'
     modified_file_path = 'file_modified.txt'
     log_file_path = 'relocation_log.txt'
-
-    generate_random_file(file_path, 9)
 
     if option == "Generate Random File":
         num_lines = st.sidebar.slider("Number of Lines", 5, 10, 5)
