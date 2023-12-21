@@ -95,7 +95,7 @@ st.latex(r"T = 4 \sqrt{\frac{l}{g}} \cdot \text{ellipk}(\sin^2(\frac{\phi_0}{2})
 # Define the bounds and step size
 a_min = 0.0
 a_max = 45.0
-b_min = 0.5
+b_min = 45.5
 b_max = 90.0
 step = 0.5
 
