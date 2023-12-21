@@ -100,7 +100,8 @@ b_max = 90.0
 step = 0.5
 
 # Create the dual-slider
-a, b = st.slider("Angle Displacement", a_min, a_max, (0, 10), step=step)
+a, b = st.slider("Angle Displacement", min = [a_min, b_min], max = [a_max,b_max], value = [0, 10], step=step)
+
 
 # Convert the bounds to LaTeX format
 a_latex = "0"
