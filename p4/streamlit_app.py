@@ -33,8 +33,8 @@ def plot_data(data):
     for l, l_data in data:
         phi0_values, T_values = zip(*l_data)
         ax.plot(phi0_values, T_values, label=f"l = {l}")
-    ax.set_xlabel("phi0")
-    ax.set_ylabel("T")
+    ax.set_xlabel("phi0, degrees")
+    ax.set_ylabel("T, s")
     ax.legend()
     return fig
     
