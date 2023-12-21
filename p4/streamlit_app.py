@@ -104,12 +104,10 @@ a = st.slider("Initial Angle Displacement", a_min, a_max, a_min, step)
 
 b = st.slider("Final Angle Displacement", b_min, b_max, 10.0, step)
 
-if a > b:
-    b = a
 
 # Convert the bounds to LaTeX format
 a_latex = "0"
-b_latex = r"10\degree"
+b_latex = r"90\degree"
 
 # Display the dual-slider with pretty LaTeX bounds
 st.latex(f"{a_latex} \leq \phi_0 \leq {b_latex}")
