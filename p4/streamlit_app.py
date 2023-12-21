@@ -102,7 +102,7 @@ step = 0.5
 # Create the dual-slider
 a = st.slider("Initial Angle Displacement", a_min, a_max, a_min, step)
 
-b = st.slider("Final Angle Displacement", b_min, b_max, 10.0, step)
+b = st.slider("Final Angle Displacement", b_min, b_max, 75.0, step)
 
 
 # Convert the bounds to LaTeX format
