@@ -146,7 +146,7 @@ else:
 st.markdown("### Stats 📊")
 
 py_maxtuple = tuple(item.item() if isinstance(item, np.generic) else str(item) for item in max_area_emoji)
-st.markdown(f"The largest area size is {max_area_size} by {sorted(py_maxtuple)}.")
+st.markdown(f"The largest area size is {max_area_size} by {sorted(py_maxtuple)*}.")
 if (min_area_size != max_area_size):
     st.write(f"The smallest area size is {min_area_size} by {sorted(min_area_emoji)}.")
    
