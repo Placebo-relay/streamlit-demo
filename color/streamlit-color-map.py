@@ -128,7 +128,7 @@ with col1:
 with col2:
     if highlight_toggle:
         selected_item = st.selectbox("Highlight 🖌️", choice)
-        st.write(find_largest_area(emoji_matrix, selected_item)[1])
+        st.write(find_largest_area(emoji_matrix, selected_item))
 
         
 emoji_matrix = pd.DataFrame(emoji_matrix)
@@ -143,7 +143,7 @@ else:
 # Print the result
 st.markdown("### Stats 📊")
 
-st.write(f"The largest area size is {max_area_size} by {sorted(max_area_emoji)}.")
+st.markdown(f"The largest area size is {max_area_size} by {sorted(max_area_emoji)}.")
 if (min_area_size != max_area_size):
     st.write(f"The smallest area size is {min_area_size} by {sorted(min_area_emoji)}.")
    
