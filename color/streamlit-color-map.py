@@ -142,13 +142,11 @@ else:
     st.dataframe(emoji_matrix)
 
 # Print the result
-st.markdown("### Stats 📊")
-
-st.write(f"The largest area size is {max_area_size} by", *max_area_emoji)
+st.write(f"Large areas {max_area_size}:", *max_area_emoji)
 if (min_area_size != max_area_size):
-    st.write(f"The smallest area size is {min_area_size} by", *min_area_emoji)
+    st.write(f"Smallest areas {min_area_size}:", *min_area_emoji)
 else:
-     st.write(f"The smallest area size = largest")
+     st.write(f"Smallest = large")
 
 with st.sidebar:
     st.write(*max_area_emoji)
