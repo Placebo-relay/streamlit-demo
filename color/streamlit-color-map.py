@@ -142,9 +142,9 @@ else:
     st.dataframe(emoji_matrix)
 
 # Print the result
-st.write(f"Large areas {max_area_size}:", *max_area_emoji)
+st.write(f"Large areas x{max_area_size}:", *max_area_emoji)
 if (min_area_size != max_area_size):
-    st.write(f"Smallest areas {min_area_size}:", *min_area_emoji)
+    st.write(f"Smallest areas x{min_area_size}:", *min_area_emoji)
 else:
      st.write(f"Smallest = large")
 
