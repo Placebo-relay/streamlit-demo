@@ -1,5 +1,5 @@
 import streamlit as st
-from numpy.random import choice as nprch
+import numpy as np
 from scipy.ndimage import label
 import pandas as pd
 
@@ -34,7 +34,7 @@ st.title('Max Area-of-same')
 @st.cache_data
 def generate_emoji_matrix(rows, cols, choice_key):
     # Generate random emoji matrix
-    emoji_matrix = nprch(choice, size=(rows, cols))
+    emoji_matrix = np.random.choice(choice, size=(rows, cols))
     return emoji_matrix
 
 def find_largest_area(emoji_matrix, emoji):
