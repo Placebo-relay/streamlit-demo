@@ -128,7 +128,7 @@ with col1:
 with col2:
     if highlight_toggle:
         selected_item = st.selectbox("Highlight 🖌️", choice)
-        st.write(find_largest_area(emoji_matrix, selected_item)[1].item())
+        st.write(find_largest_area(emoji_matrix, selected_item)[1])
 
         
 emoji_matrix = pd.DataFrame(emoji_matrix)
