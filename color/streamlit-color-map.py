@@ -153,12 +153,8 @@ if (min_area_size != max_area_size):
 else:
      st.write(f"The smallest area size = largest")
 
-with col1:
-    for _ in max_area_emoji:
-        st.write(_)
-with col2:
-    for _ in min_area_emoji:
-        st.write(_)
+with sidebar:
+    st.write(max_area_emoji)
 
 st.markdown("### 🐍Code snapshot✂️")
 
