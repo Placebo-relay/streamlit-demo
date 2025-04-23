@@ -145,10 +145,13 @@ else:
 # Print the result
 st.markdown("### Stats 📊")
 
-py_maxtuple = [item.item() if isinstance(item, np.generic) else str(item) for item in max_area_emoji].sort()
-st.markdown(f"The largest area size is {max_area_size} by {*py_maxtuple}.")
+py_maxlist = [item.item() if isinstance(item, np.generic) else str(item) for item in max_area_emoji].sort()
+maxlist = ' '.join(map(str, py_maxlist))
+st.write(f"The largest area size is {max_area_size} by {maxlist}.")
 if (min_area_size != max_area_size):
-    st.write(f"The smallest area size is {min_area_size} by {sorted(min_area_emoji)}.")
+    py_minlist = [item.item() if isinstance(item, np.generic) else str(item) for item in min_area_emoji].sort()
+    minlist = ' '.join(map(str, py_maxlist))
+    st.write(f"The smallest area size is {min_area_size} by {minlist}.")
    
 st.markdown("### 🐍Code snapshot✂️")
 
