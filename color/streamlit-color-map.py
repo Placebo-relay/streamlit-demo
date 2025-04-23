@@ -149,8 +149,7 @@ py_maxlist = [item.item() if isinstance(item, np.generic) else str(item) for ite
 st.write(f"The largest area size is {max_area_size} by ", *py_maxlist)
 if (min_area_size != max_area_size):
     py_minlist = [item.item() if isinstance(item, np.generic) else str(item) for item in min_area_emoji].sort()
-    minlist = *py_minlist
-    st.write(f"The smallest area size is {min_area_size} by {minlist}.")
+    st.write(f"The smallest area size is {min_area_size} by ", *py_minlist)
    
 st.markdown("### 🐍Code snapshot✂️")
 
