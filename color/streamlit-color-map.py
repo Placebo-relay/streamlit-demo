@@ -78,7 +78,7 @@ with st.sidebar:
     choice_key = st.radio("Choose ✔️", list(my_dict.keys()))
     choice = my_dict[choice_key]
     
-    highlight_toggle = st.checkbox("Highlight 🖌", value=True)
+    highlight_toggle = st.checkbox("Highlight 🖌 ", value=True)
     
     st.subheader("Cache 💾")
     if st.button("Clear Cache 🗑️"):
