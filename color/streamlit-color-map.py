@@ -154,7 +154,7 @@ else:
      st.write(f"The smallest area size = largest")
 
 with st.sidebar:
-    st.write(max_area_emoji)
+    st.write(*max_area_emoji)
 
 st.markdown("### 🐍Code snapshot✂️")
 
