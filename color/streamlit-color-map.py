@@ -143,7 +143,7 @@ else:
 # Print the result
 st.markdown("### Stats 📊")
 
-st.write(f"The largest area size is {max_area_size} by {sorted(max_area_emoji.item())}.")
+st.write(f"The largest area size is {max_area_size} by {sorted(max_area_emoji)}.")
 if (min_area_size != max_area_size):
     st.write(f"The smallest area size is {min_area_size} by {sorted(min_area_emoji)}.")
    
