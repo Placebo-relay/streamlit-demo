@@ -153,6 +153,9 @@ if (min_area_size != max_area_size):
 else:
      st.write(f"The smallest area size = largest")
 
+for _ in max_area_emoji:
+    st.write(_)
+
 st.markdown("### 🐍Code snapshot✂️")
 
 body = """
