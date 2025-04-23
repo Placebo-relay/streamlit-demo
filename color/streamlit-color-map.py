@@ -29,7 +29,7 @@ footer:after{
 """
 st.markdown(hide_menu, unsafe_allow_html=True)
 
-st.title('Max Area-of-same')
+st.title('minMax-Area-of-same')
 
 @st.cache_data
 def generate_emoji_matrix(rows, cols, choice_key):
@@ -128,9 +128,8 @@ with col1:
 with col2:
     if highlight_toggle:
         selected_item = st.selectbox("Highlight 🖌️", choice)
-        np_tuple = find_largest_area(emoji_matrix, selected_item)
-        py_tuple = tuple(item.item() if isinstance(item, np.generic) else str(item) for item in np_tuple)
-        st.write(py_tuple)
+        chosen_max = find_largest_area(emoji_matrix, selected_item)
+        st.write("Max area of chosen:", chosen_max[0])
 
         
 emoji_matrix = pd.DataFrame(emoji_matrix)
@@ -145,11 +144,9 @@ else:
 # Print the result
 st.markdown("### Stats 📊")
 
-py_maxlist = tuple(item.item() if isinstance(item, np.generic) else str(item) for item in max_area_emoji)
-st.write(f"The largest area size is {max_area_size} by {py_maxlist}", *max_area_emoji)
+st.write(f"The largest area size is {max_area_size} by", *max_area_emoji)
 if (min_area_size != max_area_size):
-    py_minlist = tuple(item.item() if isinstance(item, np.generic) else str(item) for item in min_area_emoji)
-    st.write(f"The smallest area size is {min_area_size} by {py_minlist}")
+    st.write(f"The smallest area size is {min_area_size} by", *min_area_emoji)
 else:
      st.write(f"The smallest area size = largest")
 
