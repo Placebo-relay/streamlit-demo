@@ -1,5 +1,5 @@
 import streamlit as st
-import numpy as np
+#import numpy as np
 from scipy.ndimage import label
 import pandas as pd
 
