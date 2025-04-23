@@ -1,5 +1,5 @@
 import streamlit as st
-from numpy import random.choice as nprch
+from numpy.random import choice as nprch
 from scipy.ndimage import label
 import pandas as pd
 
