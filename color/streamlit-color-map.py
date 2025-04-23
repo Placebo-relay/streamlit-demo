@@ -60,7 +60,7 @@ def find_largest_area(emoji_matrix, emoji):
 
 choice1 = ['🟥', '🟩', '🟦', '🟨', '🟧', '🟪', '🟫', '⬜', '⬛']
 choice2 = ["😀", "🥶", "😍", "👿", "😭", "🤪", "🤮", "😴"]
-choice3 = ["1", "2", "3", "4", "5", "6","7"]
+choice3 = ["1", "2", "3", "4", "5", "6", "7"]
 choice0 = ["🎲", "🚀", "🎁","👻","🎄","🦀","👾", "🐍", "🔥", "🌊"]
 
 my_dict = {
@@ -147,9 +147,6 @@ if (min_area_size != max_area_size):
     st.write(f"Smallest areas x{min_area_size}:", *min_area_emoji)
 else:
      st.write(f"Smallest = large")
-
-with st.sidebar:
-    st.write(*max_area_emoji)
 
 st.markdown("### 🐍Code snapshot✂️")
 
