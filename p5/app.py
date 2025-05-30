@@ -38,7 +38,7 @@ st.markdown("🎨: Position🔵, Velocity🔴")
 
 
 image_url = "p5/FORCES.png"
-image = st.sidebar.image(image_url, caption='Forces layout 🍎', use_column_width=True)
+image = st.sidebar.image(image_url, caption='Forces layout 🍎', use_container_width=True)
 
 # Sidebar widgets
 st.sidebar.title("Parameters ℹ️")
